@@ -8,18 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #fafafa;
-            --bg-tertiary: #f5f5f5;
-            --text-primary: #0a0a0a;
-            --text-secondary: #525252;
-            --text-muted: #737373;
-            --border: #e5e5e5;
-            --border-dark: #d4d4d4;
-            --accent: #0a0a0a;
-            --accent-hover: #262626;
-            --success: #16a34a;
-            --gold: #c9a227;
+            --primary: #0f172a;
+            --accent: #0ea5e9;
+            --accent-dark: #0284c7;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --bg: #ffffff;
+            --bg-light: #f8fafc;
+            --text: #0f172a;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,158 +26,139 @@
         
         body {
             font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            font-size: 15px;
-            -webkit-font-smoothing: antialiased;
+            font-size: 16px;
         }
 
-        /* Navigation */
+        .top-bar {
+            background: var(--primary);
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .top-bar-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .top-bar a { color: white; text-decoration: none; }
+
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
+            background: white;
             border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .nav-inner {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 24px;
             height: 72px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .brand {
+        .logo {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            color: var(--text-primary);
+            color: var(--text);
         }
 
-        .brand-mark {
-            width: 36px;
-            height: 36px;
-            background: var(--text-primary);
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
             color: white;
+            font-weight: 800;
+            font-size: 18px;
         }
 
-        .brand-text {
+        .logo-text {
             font-weight: 700;
-            font-size: 18px;
-            letter-spacing: -0.02em;
+            font-size: 20px;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 8px;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text-light);
             text-decoration: none;
             font-size: 15px;
             font-weight: 500;
-            transition: color 0.2s;
+            padding: 8px 16px;
+            border-radius: 6px;
         }
 
-        .nav-links a:hover { color: var(--text-primary); }
-
-        .nav-cta {
-            background: var(--text-primary);
-            color: white;
-            padding: 10px 20px;
+        .btn {
+            padding: 12px 24px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
         }
 
-        .nav-cta:hover {
-            background: var(--accent-hover);
-            transform: translateY(-1px);
-        }
-
-        /* Announcement Bar */
-        .announcement {
-            background: var(--text-primary);
+        .btn-primary {
+            background: var(--accent);
             color: white;
-            text-align: center;
-            padding: 12px;
-            font-size: 13px;
-            font-weight: 500;
-            margin-top: 72px;
         }
 
-        .announcement span {
-            color: var(--gold);
-            font-weight: 600;
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
         }
 
-        /* Hero */
         .hero {
-            padding: 100px 32px 80px;
-            background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg) 100%);
+            padding: 80px 0;
         }
 
         .hero-inner {
             max-width: 1280px;
             margin: 0 auto;
+            padding: 0 24px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 64px;
             align-items: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #f0fdf4;
-            color: var(--success);
-            padding: 6px 12px;
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .hero-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--success);
-            border-radius: 50%;
         }
 
         .hero h1 {
             font-size: 56px;
             font-weight: 800;
-            line-height: 1.05;
+            line-height: 1.1;
             letter-spacing: -0.03em;
             margin-bottom: 24px;
         }
 
         .hero-description {
-            font-size: 18px;
-            color: var(--text-secondary);
-            line-height: 1.7;
+            font-size: 20px;
+            color: var(--text-light);
             margin-bottom: 32px;
         }
 
@@ -188,1127 +168,308 @@
             margin-bottom: 48px;
         }
 
-        .btn {
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid transparent;
-        }
-
-        .btn-primary {
-            background: var(--text-primary);
-            color: white;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border-color: var(--border-dark);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--text-primary);
-            background: var(--bg-tertiary);
-        }
-
         .hero-stats {
             display: flex;
             gap: 48px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border);
         }
 
-        .stat-item h3 {
+        .stat-value {
             font-size: 36px;
             font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-            letter-spacing: -0.02em;
         }
 
-        .stat-item p {
+        .stat-label {
             font-size: 14px;
-            color: var(--text-muted);
-            font-weight: 500;
+            color: var(--text-light);
         }
 
-        /* Hero Image */
-        .hero-visual {
-            position: relative;
-        }
-
-        .hero-image-container {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            aspect-ratio: 4/3;
+        .vial-showcase {
             display: flex;
-            align-items: center;
             justify-content: center;
-            position: relative;
-        }
-
-        .hero-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .vial-display {
-            display: flex;
-            gap: 20px;
             align-items: flex-end;
+            gap: 30px;
             padding: 40px;
         }
 
-        .vial-item {
-            text-align: center;
-        }
-
-        .vial-glass {
-            width: 60px;
+        .vial {
+            width: 50px;
             height: 100px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(200,200,200,0.3));
-            border: 2px solid rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(200,200,200,0.4));
+            border: 1px solid rgba(0,0,0,0.15);
             border-radius: 4px 4px 20px 20px;
             position: relative;
-            margin-bottom: 12px;
-            box-shadow: 
-                inset -10px 0 20px rgba(255,255,255,0.5),
-                inset 10px 0 20px rgba(0,0,0,0.05),
-                0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: inset -8px 0 16px rgba(255,255,255,0.6), 0 8px 24px rgba(0,0,0,0.08);
         }
 
-        .vial-glass::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 28px;
-            height: 8px;
-            background: linear-gradient(180deg, #d0d0d0, #b0b0b0);
-            border-radius: 2px;
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .vial-glass::after {
-            content: '';
-            position: absolute;
-            bottom: 25px;
-            left: 8px;
-            right: 8px;
-            height: 45px;
-            background: linear-gradient(180deg, rgba(201, 162, 39, 0.6), rgba(201, 162, 39, 0.3));
-            border-radius: 0 0 14px 14px;
-        }
-
-        .vial-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .vial-purity {
-            font-size: 10px;
-            color: var(--success);
-            font-weight: 600;
-            margin-top: 2px;
-        }
-
-        /* Trust Logos */
-        .trust-logos {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 40px 32px;
-        }
-
-        .trust-logos-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .trust-logos p {
-            font-size: 13px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-
-        .logos-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 48px;
-            flex-wrap: wrap;
-        }
-
-        .logo-placeholder {
-            font-size: 14px;
-            color: var(--text-muted);
-            font-weight: 600;
-            opacity: 0.5;
-        }
-
-        /* Features Grid */
-        .features-section {
-            padding: 100px 32px;
-            background: white;
-        }
-
-        .features-header {
-            max-width: 1280px;
-            margin: 0 auto 64px;
-            text-align: center;
-        }
-
-        .features-header h2 {
-            font-size: 40px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-        }
-
-        .features-header p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .feature-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            border-color: var(--border-dark);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Products Section */
-        .products-section {
-            padding: 100px 32px;
-            background: var(--bg-secondary);
-        }
-
-        .products-header {
-            max-width: 1280px;
-            margin: 0 auto 48px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .products-title h2 {
-            font-size: 40px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-        }
-
-        .products-title p {
-            font-size: 17px;
-            color: var(--text-secondary);
-        }
-
-        .view-all {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .view-all:hover { text-decoration: underline; }
-
-        .products-grid {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .product-card-large {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .product-card-large:hover {
-            border-color: var(--border-dark);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .product-image-large {
-            background: linear-gradient(135deg, #f8f8f8, #f0f0f0);
-            aspect-ratio: 16/10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            background: var(--text-primary);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .product-badge.bestseller {
-            background: var(--gold);
-            color: var(--text-primary);
-        }
-
-        .vial-product {
-            width: 50px;
-            height: 85px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(220,220,220,0.4));
-            border: 1px solid rgba(0,0,0,0.15);
-            border-radius: 3px 3px 16px 16px;
-            position: relative;
-            box-shadow: 
-                inset -8px 0 16px rgba(255,255,255,0.6),
-                0 8px 24px rgba(0,0,0,0.1);
-        }
-
-        .vial-product::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 22px;
-            height: 6px;
-            background: linear-gradient(180deg, #c0c0c0, #a0a0a0);
-            border-radius: 2px;
-        }
-
-        .vial-product::after {
+        .vial::after {
             content: '';
             position: absolute;
             bottom: 20px;
             left: 6px;
             right: 6px;
-            height: 35px;
-            background: linear-gradient(180deg, rgba(201, 162, 39, 0.5), rgba(201, 162, 39, 0.25));
-            border-radius: 0 0 10px 10px;
+            height: 45px;
+            background: linear-gradient(180deg, rgba(14, 165, 233, 0.5), rgba(14, 165, 233, 0.25));
+            border-radius: 0 0 14px 14px;
         }
 
-        .product-info-large {
-            padding: 24px;
-        }
-
-        .product-name-large {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .product-desc-large {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-        }
-
-        .product-purity-large {
-            font-size: 13px;
-            color: var(--success);
-            font-weight: 600;
-        }
-
-        .product-price-large {
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 100px 32px;
+        .trust-bar {
             background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
         }
 
-        .testimonials-header {
-            max-width: 1280px;
-            margin: 0 auto 64px;
-            text-align: center;
-        }
-
-        .testimonials-header h2 {
-            font-size: 40px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-        }
-
-        .testimonials-header p {
-            font-size: 18px;
-            color: var(--text-secondary);
-        }
-
-        .testimonials-grid {
+        .trust-bar-inner {
             max-width: 1280px;
             margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: center;
+            gap: 64px;
+        }
+
+        .features {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .features-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 64px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
-        .testimonial-card {
-            background: var(--bg-secondary);
+        .feature-card {
+            background: white;
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 32px;
         }
 
-        .testimonial-stars {
-            color: var(--gold);
-            font-size: 16px;
-            margin-bottom: 16px;
-            letter-spacing: 2px;
+        .products {
+            padding: 100px 0;
         }
 
-        .testimonial-text {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .author-avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--border-dark);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .author-info h4 {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .author-info p {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        /* Certifications */
-        .certifications {
-            padding: 80px 32px;
-            background: var(--text-primary);
-            color: white;
-        }
-
-        .certifications-inner {
+        .products-inner {
             max-width: 1280px;
             margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .products-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: center;
-        }
-
-        .certifications-content h2 {
-            font-size: 36px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-        }
-
-        .certifications-content p {
-            font-size: 17px;
-            color: #a0a0a0;
-            line-height: 1.7;
-            margin-bottom: 32px;
-        }
-
-        .cert-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .cert-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 15px;
-        }
-
-        .cert-check {
-            width: 24px;
-            height: 24px;
-            background: var(--success);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .certifications-badges {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
 
-        .cert-badge {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+        .product-card {
+            background: white;
+            border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 24px;
-            text-align: center;
+            overflow: hidden;
         }
 
-        .cert-badge-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
+        .product-image {
+            background: linear-gradient(135deg, var(--bg-light), #f1f5f9);
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
-        .cert-badge h4 {
-            font-size: 14px;
+        .product-image .vial {
+            transform: scale(1.2);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
             font-weight: 700;
-            margin-bottom: 4px;
         }
 
-        .cert-badge p {
-            font-size: 12px;
-            color: #737373;
-            margin: 0;
+        .product-info {
+            padding: 20px;
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 32px;
-            background: linear-gradient(135deg, #fafafa, #f5f5f5);
-            text-align: center;
+        .product-name {
+            font-size: 16px;
+            font-weight: 700;
         }
 
-        .cta-inner {
-            max-width: 640px;
-            margin: 0 auto;
-        }
-
-        .cta-section h2 {
-            font-size: 44px;
+        .product-price {
+            font-size: 20px;
             font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 20px;
         }
 
-        .cta-section p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-bottom: 32px;
-        }
-
-        .cta-guarantee {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .guarantee-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        /* Footer */
         footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            padding: 64px 32px 32px;
+            background: var(--primary);
+            color: white;
+            padding: 64px 0 32px;
         }
 
         .footer-inner {
             max-width: 1280px;
             margin: 0 auto;
+            padding: 0 24px;
         }
 
-        .footer-top {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 64px;
-            margin-bottom: 64px;
-        }
-
-        .footer-brand .brand {
-            margin-bottom: 20px;
-        }
-
-        .footer-brand p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .footer-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-contact a {
-            font-size: 14px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .footer-col h5 {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 20px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col li {
-            margin-bottom: 10px;
-        }
-
-        .footer-col a {
-            font-size: 15px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-col a:hover {
-            color: var(--text-primary);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border);
-            padding-top: 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-bottom p {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        .footer-legal {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-legal a {
-            font-size: 14px;
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-
-        .footer-legal a:hover {
-            color: var(--text-primary);
-        }
-
-        /* Responsive */
         @media (max-width: 1024px) {
             .hero-inner {
                 grid-template-columns: 1fr;
-                gap: 48px;
             }
-
-            .features-grid,
-            .products-grid,
-            .testimonials-grid {
+            .features-grid, .products-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            .certifications-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-top {
-                grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .features-grid,
-            .products-grid,
-            .testimonials-grid {
+            .nav-links { display: none; }
+            .features-grid, .products-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero-stats {
-                flex-wrap: wrap;
-                gap: 24px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .footer-top {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
             }
         }
     </style>
 </head>
 <body>
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div>✓ ISO 9001:2015 Certified | ✓ Free Shipping Over $200</div>
+            <div>
+                <a href="tel:1-800-555-0123">1-800-555-0123</a> |
+                <a href="mailto:orders@titanpeptidelab.com">orders@titanpeptidelab.com</a>
+            </div>
+        </div>
+    </div>
+
     <nav>
         <div class="nav-inner">
-            <a href="#" class="brand">
-                <div class="brand-mark">T</div>
-                <span class="brand-text">Titan Laboratory</span>
+            <a href="#" class="logo">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Titan Laboratory</div>
             </a>
             <ul class="nav-links">
+                <li><a href="#">Home</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#quality">Quality</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
-            <a href="#products" class="nav-cta">Shop Now</a>
+            <a href="#products" class="btn btn-primary">Shop Now</a>
         </div>
     </nav>
-
-    <div class="announcement">
-        ✓ Free shipping on orders over $200 | <span>Same-day dispatch</span> for orders before 2pm EST
-    </div>
 
     <section class="hero">
         <div class="hero-inner">
             <div class="hero-content">
-                <div class="hero-badge">ISO 9001:2015 Certified</div>
                 <h1>Research-Grade Peptides for Scientific Excellence</h1>
-                <p class="hero-description">
-                    Premium lyophilized peptides with certified purity reports. Trusted by 2,400+ research institutions, universities, and laboratories worldwide.
-                </p>
+                <p class="hero-description">Premium lyophilized peptides with certified purity reports. Trusted by 2,400+ research institutions worldwide.</p>
                 <div class="hero-actions">
                     <a href="#products" class="btn btn-primary">Browse Products</a>
-                    <a href="#quality" class="btn btn-secondary">View Certificates</a>
+                    <a href="#quality" class="btn btn-outline">View Certificates</a>
                 </div>
                 <div class="hero-stats">
-                    <div class="stat-item">
-                        <h3>99.3%</h3>
-                        <p>Average Purity</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>2,400+</h3>
-                        <p>Research Partners</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>48hr</h3>
-                        <p>Delivery Time</p>
-                    </div>
+                    <div><div class="stat-value">99.3%</div><div class="stat-label">Average Purity</div></div>
+                    <div><div class="stat-value">2,400+</div><div class="stat-label">Research Partners</div></div>
+                    <div><div class="stat-value">48hr</div><div class="stat-label">Delivery Time</div></div>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-image-container">
-                    <div class="vial-display">
-                        <div class="vial-item">
-                            <div class="vial-glass"></div>
-                            <div class="vial-label">Semaglutide</div>
-                            <div class="vial-purity">99.2%</div>
-                        </div>
-                        <div class="vial-item">
-                            <div class="vial-glass"></div>
-                            <div class="vial-label">BPC-157</div>
-                            <div class="vial-purity">99.5%</div>
-                        </div>
-                        <div class="vial-item">
-                            <div class="vial-glass"></div>
-                            <div class="vial-label">TB-500</div>
-                            <div class="vial-purity">99.3%</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="vial-showcase">
+                <div class="vial"></div>
+                <div class="vial"></div>
+                <div class="vial"></div>
             </div>
         </div>
     </section>
 
-    <div class="trust-logos">
-        <div class="trust-logos-inner">
-            <p>Trusted by leading research institutions</p>
-            <div class="logos-row">
-                <span class="logo-placeholder">Stanford Medicine</span>
-                <span class="logo-placeholder">Johns Hopkins</span>
-                <span class="logo-placeholder">MIT Research</span>
-                <span class="logo-placeholder">Mayo Clinic</span>
-                <span class="logo-placeholder">UCSF Health</span>
-            </div>
+    <div class="trust-bar">
+        <div class="trust-bar-inner">
+            <div>🔬 HPLC Verified</div>
+            <div>📋 Batch COAs</div>
+            <div>🚚 Fast Shipping</div>
+            <div>🛡️ Secure Packaging</div>
         </div>
     </div>
 
-    <section class="features-section" id="quality">
-        <div class="features-header">
-            <h2>Why Researchers Choose Titan</h2>
-            <p>We maintain the highest standards in peptide synthesis, testing, and delivery</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🔬</div>
-                <h3>HPLC Verified</h3>
-                <p>Every batch undergoes independent HPLC and mass spectrometry analysis. Full COAs provided with every order.</p>
+    <section class="features" id="quality">
+        <div class="features-inner">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Titan</h2>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">📦</div>
-                <h3>Cold Chain Shipping</h3>
-                <p>Temperature-controlled packaging with insulated containers and gel packs to maintain peptide integrity.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Discrete Packaging</h3>
-                <p>Plain, unmarked boxes with no indication of contents. Your research privacy is our priority.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Same-Day Dispatch</h3>
-                <p>Orders placed before 2pm EST ship the same day. Express delivery available nationwide.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">✓</div>
-                <h3>Quality Guarantee</h3>
-                <p>30-day satisfaction guarantee. If you're not satisfied with the quality, we'll make it right.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💬</div>
-                <h3>Expert Support</h3>
-                <p>Our team includes PhD-level scientists available to answer your technical questions.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="products-section" id="products">
-        <div class="products-header">
-            <div class="products-title">
-                <h2>Research Peptides</h2>
-                <p>All products include batch-specific certificates of analysis</p>
-            </div>
-            <a href="#" class="view-all">View all products →</a>
-        </div>
-        <div class="products-grid">
-            <div class="product-card-large">
-                <div class="product-image-large">
-                    <div class="vial-product"></div>
-                    <span class="product-badge bestseller">Bestseller</span>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🔬 Independent Testing</h3>
+                    <p>Every batch undergoes rigorous HPLC and mass spectrometry analysis.</p>
                 </div>
-                <div class="product-info-large">
-                    <h3 class="product-name-large">Semaglutide</h3>
-                    <p class="product-desc-large">GLP-1 receptor agonist. 5mg lyophilized powder for research use.</p>
-                    <div class="product-footer">
-                        <span class="product-purity-large">★ 99.2% Pure</span>
-                        <span class="product-price-large">$149</span>
-                    </div>
+                <div class="feature-card">
+                    <h3>📦 Cold Chain Shipping</h3>
+                    <p>Temperature-controlled packaging with insulated containers.</p>
                 </div>
-            </div>
-
-            <div class="product-card-large">
-                <div class="product-image-large">
-                    <div class="vial-product"></div>
-                    <span class="product-badge">Popular</span>
-                </div>
-                <div class="product-info-large">
-                    <h3 class="product-name-large">Tirzepatide</h3>
-                    <p class="product-desc-large">Dual GIP/GLP-1 agonist. 5mg lyophilized powder for research.</p>
-                    <div class="product-footer">
-                        <span class="product-purity-large">★ 99.1% Pure</span>
-                        <span class="product-price-large">$189</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card-large">
-                <div class="product-image-large">
-                    <div class="vial-product"></div>
-                </div>
-                <div class="product-info-large">
-                    <h3 class="product-name-large">BPC-157</h3>
-                    <p class="product-desc-large">Pentadecapeptide. 5mg lyophilized powder for research use.</p>
-                    <div class="product-footer">
-                        <span class="product-purity-large">★ 99.5% Pure</span>
-                        <span class="product-price-large">$79</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card-large">
-                <div class="product-image-large">
-                    <div class="vial-product"></div>
-                </div>
-                <div class="product-info-large">
-                    <h3 class="product-name-large">TB-500</h3>
-                    <p class="product-desc-large">Thymosin Beta-4 fragment. 5mg lyophilized powder.</p>
-                    <div class="product-footer">
-                        <span class="product-purity-large">★ 99.3% Pure</span>
-                        <span class="product-price-large">$89</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card-large">
-                <div class="product-image-large">
-                    <div class="vial-product"></div>
-                </div>
-                <div class="product-info-large">
-                    <h3 class="product-name-large">CJC-1295</h3>
-                    <p class="product-desc-large">Growth hormone releasing hormone analog. 2mg powder.</p>
-                    <div class="product-footer">
-                        <span class="product-purity-large">★ 99.0% Pure</span>
-                        <span class="product-price-large">$59</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card-large">
-                <div class="product-image-large">
-                    <div class="vial-product"></div>
-                </div>
-                <div class="product-info-large">
-                    <h3 class="product-name-large">Ipamorelin</h3>
-                    <p class="product-desc-large">Growth hormone secretagogue. 5mg lyophilized powder.</p>
-                    <div class="product-footer">
-                        <span class="product-purity-large">★ 99.4% Pure</span>
-                        <span class="product-price-large">$69</span>
-                    </div>
+                <div class="feature-card">
+                    <h3>⚡ Same-Day Dispatch</h3>
+                    <p>Orders placed before 2pm EST ship the same day.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonials" id="about">
-        <div class="testimonials-header">
-            <h2>Trusted by Researchers Worldwide</h2>
-            <p>Here's what scientists and lab directors say about working with us</p>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"The purity reports are the most detailed I've seen from any supplier. Every vial comes with a QR code linking to the full COA. That level of transparency is rare."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">MR</div>
-                    <div class="author-info">
-                        <h4>Dr. Michael R.</h4>
-                        <p>Research Director, Boston</p>
+    <section class="products" id="products">
+        <div class="products-inner">
+            <h2 class="section-title" style="text-align:center;margin-bottom:48px;">Research Peptides</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="vial"></div>
+                        <span class="product-badge">Bestseller</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Semaglutide</div>
+                        <div class="product-price">$149</div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"Shipping speed is exceptional. I ordered Monday morning, had my peptides Wednesday. The cold packs were still frozen solid. Professional packaging every time."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">SK</div>
-                    <div class="author-info">
-                        <h4>Sarah K.</h4>
-                        <p>Lab Manager, San Diego</p>
+                <div class="product-card">
+                    <div class="product-image"><div class="vial"></div></div>
+                    <div class="product-info">
+                        <div class="product-name">Tirzepatide</div>
+                        <div class="product-price">$189</div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"After testing three different suppliers, Titan consistently delivered the highest purity. Our mass spec results matched their COAs within 0.1%."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">JL</div>
-                    <div class="author-info">
-                        <h4>Dr. James L.</h4>
-                        <p>Principal Investigator, Austin</p>
+                <div class="product-card">
+                    <div class="product-image"><div class="vial"></div></div>
+                    <div class="product-info">
+                        <div class="product-name">BPC-157</div>
+                        <div class="product-price">$79</div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="certifications">
-        <div class="certifications-inner">
-            <div class="certifications-content">
-                <h2>Certified Quality Standards</h2>
-                <p>We maintain rigorous quality control and are certified to international standards. Every batch is tested and documented.</p>
-                <div class="cert-list">
-                    <div class="cert-item">
-                        <div class="cert-check">✓</div>
-                        <span>ISO 9001:2015 Quality Management</span>
+                <div class="product-card">
+                    <div class="product-image"><div class="vial"></div></div>
+                    <div class="product-info">
+                        <div class="product-name">TB-500</div>
+                        <div class="product-price">$89</div>
                     </div>
-                    <div class="cert-item">
-                        <div class="cert-check">✓</div>
-                        <span>cGMP Compliant Manufacturing</span>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-check">✓</div>
-                        <span>Third-party HPLC & Mass Spec Testing</span>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-check">✓</div>
-                        <span>Certificate of Analysis with Every Order</span>
-                    </div>
-                </div>
-            </div>
-            <div class="certifications-badges">
-                <div class="cert-badge">
-                    <div class="cert-badge-icon">🏆</div>
-                    <h4>ISO 9001</h4>
-                    <p>Certified</p>
-                </div>
-                <div class="cert-badge">
-                    <div class="cert-badge-icon">🔬</div>
-                    <h4>cGMP</h4>
-                    <p>Compliant</p>
-                </div>
-                <div class="cert-badge">
-                    <div class="cert-badge-icon">📋</div>
-                    <h4>COA</h4>
-                    <p>Included</p>
-                </div>
-                <div class="cert-badge">
-                    <div class="cert-badge-icon">🧪</div>
-                    <h4>HPLC</h4>
-                    <p>Verified</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section" id="contact">
-        <div class="cta-inner">
-            <h2>Ready to Order?</h2>
-            <p>Join 2,400+ research institutions who trust Titan for their analytical compounds. Free shipping on orders over $200.</p>
-            <div class="cta-buttons">
-                <a href="#products" class="btn btn-primary">Browse Products</a>
-                <a href="mailto:orders@titanpeptidelab.com" class="btn btn-secondary">Contact Sales</a>
-            </div>
-            <div class="cta-guarantee">
-                <div class="guarantee-item">
-                    <span>✓</span>
-                    <span>Free shipping over $200</span>
-                </div>
-                <div class="guarantee-item">
-                    <span>✓</span>
-                    <span>30-day satisfaction guarantee</span>
-                </div>
-                <div class="guarantee-item">
-                    <span>✓</span>
-                    <span>Same-day dispatch</span>
                 </div>
             </div>
         </div>
@@ -1316,67 +477,8 @@
 
     <footer>
         <div class="footer-inner">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="#" class="brand">
-                        <div class="brand-mark">T</div>
-                        <span class="brand-text">Titan Laboratory</span>
-                    </a>
-                    <p>Research-grade peptides for scientific study. Third-party tested with certified analytical reports. Trusted by institutions worldwide.</p>
-                    <div class="footer-contact">
-                        <a href="mailto:orders@titanpeptidelab.com">orders@titanpeptidelab.com</a>
-                        <a href="tel:+1-800-555-0123">1-800-555-0123</a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h5>Products</h5>
-                    <ul>
-                        <li><a href="#">Semaglutide</a></li>
-                        <li><a href="#">Tirzepatide</a></li>
-                        <li><a href="#">BPC-157</a></li>
-                        <li><a href="#">TB-500</a></li>
-                        <li><a href="#">View All</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>Company</h5>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Quality Standards</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>Legal</h5>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Research Use Only</a></li>
-                        <li><a href="#">Return Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 Titan Laboratory. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Terms</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Cookies</a>
-                </div>
-            </div>
+            <p>© 2026 Titan Laboratory. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                const t = document.querySelector(a.getAttribute('href'));
-                if (t) t.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
 </body>
 </html>

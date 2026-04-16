@@ -1569,26 +1569,25 @@ function toggleFaq(el){
 }
 
 // ── Live activity notifications ──
-const liveData=[
-  {product:'BPC-157 5mg',loc:'California',time:'2 min ago'},
-  {product:'Semaglutide 5mg',loc:'Texas',time:'5 min ago'},
-  {product:'TB-500 5mg',loc:'New York',time:'8 min ago'},
-  {product:'Retatrutide 5mg',loc:'Florida',time:'11 min ago'},
-  {product:'BPC-157 Nasal Spray',loc:'Ontario, Canada',time:'14 min ago'},
-  {product:'Selank Nasal Spray',loc:'London, UK',time:'18 min ago'},
-  {product:'CJC-1295 + Ipamorelin',loc:'Sydney, Australia',time:'22 min ago'},
-  {product:'Tirzepatide 5mg',loc:'Germany',time:'25 min ago'},
-  {product:'GHK-Cu 50mg',loc:'Singapore',time:'31 min ago'},
-  {product:'Semaglutide 10mg',loc:'Netherlands',time:'37 min ago'}
-];
-let liveIdx=0;
+const names = ['Alex','Jordan','Casey','Taylor','Morgan','Riley','Quinn','Avery','Cameron','Dakota','Reese','Hayden','Sage','Parker','Kai','Rowan','Sawyer','Emerson','Finley','River'];
+const countries = ['USA','Canada','UK','Germany','Australia','Netherlands','Singapore','Sweden','France','Japan','Norway','Denmark','Switzerland','New Zealand','Ireland','Belgium','Austria','Finland'];
+const products = ['BPC-157 5mg','Semaglutide 5mg','TB-500 5mg','Retatrutide 5mg','BPC-157 Nasal Spray','Selank Nasal Spray','CJC-1295 + Ipamorelin','Tirzepatide 5mg','GHK-Cu 50mg','Semaglutide 10mg'];
+
+function getRandomLiveData() {
+  const name = names[Math.floor(Math.random() * names.length)];
+  const country = countries[Math.floor(Math.random() * countries.length)];
+  const product = products[Math.floor(Math.random() * products.length)];
+  const mins = Math.floor(Math.random() * 20) + 2; // 2-22 min ago
+  return { name, country, product, mins };
+}
+
 function showLiveNotif(){
   const notif=document.getElementById('liveNotif');
-  const d=liveData[liveIdx%liveData.length];
-  document.getElementById('lnText').innerHTML=`Someone in <strong>${d.loc}</strong> just ordered <strong>${d.product}</strong>`;
-  document.getElementById('lnTime').textContent=d.time;
+  const d = getRandomLiveData();
+  document.getElementById('lnText').innerHTML=`<strong>${d.name}</strong> from <strong>${d.country}</strong> just ordered <strong>${d.product}</strong>`;
+  document.getElementById('lnTime').textContent=d.mins + ' min ago';
   notif.classList.add('show');
-  setTimeout(()=>{notif.classList.remove('show');liveIdx++;},5000);
+  setTimeout(()=>{notif.classList.remove('show');},5000);
 }
 setTimeout(()=>{showLiveNotif();setInterval(showLiveNotif,25000);},8000);
 

@@ -603,6 +603,37 @@ footer{background:var(--ink);border-top:1px solid var(--b-dark);padding:64px 0 0
 .nl-fine{font-size:.8125rem;color:var(--fg-3)}
 .nl-success{color:var(--green);font-size:.9375rem;font-weight:600;margin-top:16px}
 @media(max-width:480px){.nl-form{flex-direction:column}.nl-input{min-width:auto}}
+
+/* ── Product Detail Modal ── */
+.pmodal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.pmodal.on{opacity:1;visibility:visible}
+.pmodal-back{position:absolute;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px)}
+.pmodal-card{position:relative;background:var(--ink-1);border:1px solid var(--b-mid);border-radius:24px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;transform:translateY(30px) scale(.95);transition:transform .4s cubic-bezier(.16,1,.3,1);box-shadow:0 40px 100px rgba(0,0,0,.6)}
+.pmodal.on .pmodal-card{transform:none}
+.pmodal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:var(--ink-2);border:1px solid var(--b-mid);color:var(--fg-2);font-size:1.25rem;cursor:pointer;z-index:10;transition:all .2s}
+.pmodal-close:hover{background:var(--ink-3);color:var(--fg);border-color:var(--gold)}
+.pmodal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.pmodal-img-wrap{background:var(--ink-2);display:flex;align-items:center;justify-content:center;padding:40px;min-height:400px}
+.pmodal-img{max-width:100%;max-height:320px;object-fit:contain}
+.pmodal-info{padding:40px;display:flex;flex-direction:column}
+.pmodal-cat{font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.pmodal-name{font-size:2rem;line-height:1.1;margin-bottom:8px}
+.pmodal-price{font-size:2.5rem;color:var(--gold);margin-bottom:24px}
+.pmodal-specs{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;padding:20px;background:var(--ink-2);border-radius:12px;border:1px solid var(--b-dark)}
+.pmodal-spec{display:flex;justify-content:space-between;font-size:.875rem}
+.pmodal-spec span{color:var(--fg-2)}
+.pmodal-spec strong{color:var(--fg);font-weight:600}
+.spec-pure{color:var(--green)!important}
+.pmodal-desc{font-size:.9375rem;color:var(--fg-2);line-height:1.7;margin-bottom:32px;flex:1}
+.pmodal-actions{display:flex;gap:12px}
+@media(max-width:768px){
+  .pmodal-grid{grid-template-columns:1fr}
+  .pmodal-img-wrap{min-height:200px;padding:24px}
+  .pmodal-img{max-height:180px}
+  .pmodal-info{padding:24px}
+  .pmodal-name{font-size:1.5rem}
+  .pmodal-price{font-size:1.75rem}
+}
 </style>
 </head>
 <body>
@@ -1277,7 +1308,7 @@ function renderProducts(){
     const stockClass=stock<8?'pc-stock low':'pc-stock';
     const stockText=stock<8?`Only ${stock} left`:'In Stock';
     return `
-    <div class="pc" data-reveal>
+    <div class="pc" data-reveal onclick="openProductModal('${p.id}')" style="cursor:pointer">
       <div class="pc-img">
         <div class="pc-cat-tag">${p.category}</div>
         ${badges.length?'<div class="pc-badges">'+badges.join('')+'</div>':''}
@@ -1291,7 +1322,7 @@ function renderProducts(){
         <div class="pc-desc">${p.description}</div>
         <div class="pc-ft">
           <div><div class="pc-price serif">$${p.price.toFixed(2)}</div><div class="${stockClass}">${stockText}</div></div>
-          <button class="btn-add" onclick="addToCart('${p.id}')">Add to Cart</button>
+          <button class="btn-add" onclick="event.stopPropagation();addToCart('${p.id}')">Add to Cart</button>
         </div>
       </div>
     </div>`;
@@ -1305,6 +1336,54 @@ function filterP(btn,cat){
   document.querySelectorAll('.pill').forEach(p=>p.classList.remove('on'));
   btn.classList.add('on');
   renderProducts();
+}
+
+// ── Product Detail Modal ──
+function openProductModal(id) {
+  const p = products.find(pr => pr.id === id);
+  if (!p) return;
+  
+  const modal = document.createElement('div');
+  modal.id = 'productModal';
+  modal.className = 'pmodal';
+  modal.innerHTML = `
+    <div class="pmodal-back" onclick="closeProductModal()"></div>
+    <div class="pmodal-card">
+      <button class="pmodal-close" onclick="closeProductModal()">✕</button>
+      <div class="pmodal-grid">
+        <div class="pmodal-img-wrap">
+          <img src="${p.image}" alt="${p.name}" class="pmodal-img" onerror="this.style.display='none'">
+        </div>
+        <div class="pmodal-info">
+          <div class="pmodal-cat">${p.category}</div>
+          <h2 class="pmodal-name serif">${p.name}</h2>
+          <div class="pmodal-price serif">$${p.price.toFixed(2)}</div>
+          <div class="pmodal-specs">
+            <div class="pmodal-spec"><span>Dosage</span><strong>${p.dosage}</strong></div>
+            <div class="pmodal-spec"><span>Purity</span><strong class="spec-pure">${p.purity} HPLC</strong></div>
+            <div class="pmodal-spec"><span>Form</span><strong>${p.category}</strong></div>
+            <div class="pmodal-spec"><span>COA</span><strong class="spec-pure">Included ✓</strong></div>
+          </div>
+          <p class="pmodal-desc">${p.description}</p>
+          <div class="pmodal-actions">
+            <button class="btn-gold" onclick="addToCart('${p.id}');closeProductModal();">Add to Cart</button>
+            <button class="btn-ghost" onclick="closeProductModal()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => modal.classList.add('on'), 10);
+}
+
+function closeProductModal() {
+  const m = document.getElementById('productModal');
+  if (m) {
+    m.classList.remove('on');
+    setTimeout(() => { m.remove(); document.body.style.overflow = ''; }, 300);
+  }
 }
 
 // ── Cart ──

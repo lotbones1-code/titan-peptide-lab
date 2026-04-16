@@ -4,551 +4,624 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Titan Peptide Lab — Research-Grade Compounds</title>
-  <meta name="description" content="Independently verified research peptides. 99%+ purity, HPLC tested, COA with every order. Crypto payments only.">
+  <meta name="description" content="Research-grade peptides independently verified to 99%+ purity. HPLC tested. Certificate of Analysis with every order.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="titan-elite.css">
+  
   <style>
-    :root {
-      --bg: #0A0A0F;
-      --surface: #111118;
-      --surface-hover: #1A1A24;
-      --surface-elevated: #22222E;
-      --text: #FFFFFF;
-      --text-secondary: #A0A0B0;
-      --text-tertiary: #6B6B7B;
-      --accent: #00D4AA;
-      --accent-hover: #00B894;
-      --success: #22C55E;
-      --border: rgba(255,255,255,0.08);
-      --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --shadow-lg: 0 8px 40px rgba(0,0,0,0.5);
-    }
+    /* Inline critical CSS for fast first paint */
+    .fade-in { animation: fadeIn 0.8s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
     
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
     
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-    
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--accent);
-      color: var(--bg);
-      padding: 8px 16px;
-      z-index: 9999;
-      font-weight: 600;
-    }
-    .skip-link:focus { top: 0; }
-    
-    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-    
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 72px;
-      background: rgba(10,10,15,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-    }
-    
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      text-decoration: none;
-      color: var(--text);
-    }
-    
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a {
+    .check-list { list-style: none; }
+    .check-list li { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      padding: 8px 0;
+      font-size: 14px;
       color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--text); }
-    
-    .nav-right { display: flex; align-items: center; gap: 16px; }
-    
-    .crypto-badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: rgba(247,147,26,0.1);
-      border: 1px solid rgba(247,147,26,0.3);
-      border-radius: 100px;
-      font-size: 12px;
-      color: #f7931a;
-      font-weight: 500;
-    }
-    
-    .btn-primary {
-      background: var(--accent);
-      color: var(--bg);
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0,212,170,0.3);
-    }
-    .btn-large { padding: 14px 28px; font-size: 16px; }
-    
-    .hero {
-      padding: 140px 24px 80px;
-      background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,212,170,0.1), transparent), var(--bg);
-    }
-    
-    .hero-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      background: rgba(0,212,170,0.1);
-      border: 1px solid rgba(0,212,170,0.2);
-      border-radius: 100px;
-      font-size: 13px;
-      color: var(--accent);
-      margin-bottom: 24px;
-      font-weight: 500;
-    }
-    .badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
+    .check-list li::before {
+      content: '✓';
+      width: 20px;
+      height: 20px;
+      background: rgba(0, 212, 170, 0.1);
+      color: var(--accent-primary);
       border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    
-    h1 {
-      font-size: 56px;
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin-bottom: 24px;
-    }
-    h1 span {
-      background: linear-gradient(135deg, var(--accent), #00f5d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .hero-description {
-      font-size: 18px;
-      color: var(--text-secondary);
-      margin-bottom: 20px;
-      max-width: 480px;
-    }
-    
-    .crypto-notice {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--accent);
-      margin-bottom: 32px;
-      padding: 12px 16px;
-      background: rgba(0,212,170,0.08);
-      border-radius: 8px;
-      border: 1px solid rgba(0,212,170,0.15);
-      max-width: fit-content;
-    }
-    
-    .stats {
-      display: flex;
-      gap: 48px;
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-    }
-    .stat-value { font-size: 32px; font-weight: 700; display: block; letter-spacing: -1px; }
-    .stat-label { font-size: 12px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-    
-    .hero-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,212,170,0.5), transparent);
-    }
-    
-    .coa-preview {
-      background: var(--surface-hover);
-      border-radius: 12px;
-      padding: 24px;
-      margin-top: 20px;
-      border: 1px solid var(--border);
-    }
-    .coa-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 14px;
-    }
-    .coa-row:last-child { border-bottom: none; }
-    .coa-row strong { color: var(--accent); font-weight: 600; }
-    
-    .products { padding: 80px 24px; background: var(--surface); }
-    .section-container { max-width: 1200px; margin: 0 auto; }
-    .section-header { text-align: center; margin-bottom: 64px; }
-    h2 { font-size: 40px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 16px; }
-    .section-header p { color: var(--text-secondary); font-size: 18px; }
-    
-    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .product-card {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: all 0.25s ease;
-      box-shadow: var(--shadow);
-    }
-    .product-card:hover {
-      border-color: rgba(0,212,170,0.3);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-    .product-tag {
-      display: inline-block;
-      padding: 4px 10px;
-      background: rgba(0,212,170,0.1);
-      color: var(--accent);
-      border-radius: 100px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 16px;
-    }
-    .product-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
-    .product-description { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.5; }
-    .product-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--border); }
-    .product-price { font-size: 24px; font-weight: 700; }
-    .add-to-cart {
-      background: var(--accent);
-      color: var(--bg);
-      border: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .add-to-cart:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    
-    .trust { padding: 80px 24px; border-top: 1px solid var(--border); }
-    .trust-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
-    .trust-item { padding: 24px; }
-    .trust-icon { width: 56px; height: 56px; margin: 0 auto 20px; background: var(--surface); border-radius: 14px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); color: var(--accent); font-size: 28px; }
-    .trust-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-    .trust-item p { font-size: 14px; color: var(--text-tertiary); line-height: 1.5; }
-    
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(8px);
-      z-index: 200;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      font-size: 12px;
+      flex-shrink: 0;
     }
-    .modal-overlay.active { display: flex; }
-    .modal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      width: 100%;
-      max-width: 480px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 32px;
-      box-shadow: var(--shadow-lg);
-    }
-    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-    .modal-header h3 { font-size: 20px; font-weight: 600; }
-    .modal-close { background: none; border: none; color: var(--text-secondary); font-size: 28px; cursor: pointer; padding: 4px; border-radius: 6px; transition: all 0.2s; }
-    .modal-close:hover { color: var(--text); background: var(--surface-hover); }
-    .cart-item { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--border); }
-    .cart-total { display: flex; justify-content: space-between; padding: 20px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
-    .crypto-warning { padding: 14px; background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.2); border-radius: 10px; font-size: 14px; color: var(--accent); margin-bottom: 20px; }
-    .crypto-option { display: flex; align-items: center; gap: 14px; padding: 16px; background: var(--surface-hover); border: 2px solid var(--border); border-radius: 12px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s; }
-    .crypto-option:hover, .crypto-option.selected { border-color: var(--accent); background: rgba(0,212,170,0.05); }
-    .crypto-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); font-size: 20px; font-weight: 700; }
-    .crypto-info { flex: 1; }
-    .crypto-info strong { display: block; font-size: 15px; margin-bottom: 2px; }
-    .crypto-info span { font-size: 13px; color: var(--text-tertiary); }
-    .wallet-address { margin-top: 24px; padding: 20px; background: var(--surface-hover); border-radius: 12px; font-family: monospace; font-size: 13px; word-break: break-all; position: relative; border: 1px solid var(--border); }
-    .copy-btn { position: absolute; top: 16px; right: 16px; background: var(--surface); border: 1px solid var(--border); color: var(--text-secondary); padding: 8px 14px; border-radius: 6px; font-size: 13px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.2s; }
-    .copy-btn:hover { color: var(--text); border-color: var(--accent); }
-    .submit-order { width: 100%; background: var(--accent); color: var(--bg); border: none; padding: 18px; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 24px; transition: all 0.2s; }
-    .submit-order:hover { background: var(--accent-hover); transform: translateY(-1px); }
     
-    @media (max-width: 1024px) {
-      .hero-container { grid-template-columns: 1fr; gap: 48px; }
-      .hero { padding: 120px 24px 60px; }
-      h1 { font-size: 42px; }
-      .product-grid { grid-template-columns: repeat(2, 1fr); }
-      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    .molecule-bg {
+      position: absolute;
+      right: -10%;
+      top: 10%;
+      width: 600px;
+      height: 600px;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='20' r='3' fill='%2300d4aa'/%3E%3Ccircle cx='50' cy='30' r='3' fill='%2300d4aa'/%3E%3Ccircle cx='80' cy='20' r='3' fill='%2300d4aa'/%3E%3Ccircle cx='30' cy='50' r='3' fill='%2300d4aa'/%3E%3Ccircle cx='70' cy='50' r='3' fill='%2300d4aa'/%3E%3Ccircle cx='50' cy='70' r='3' fill='%2300d4aa'/%3E%3Cline x1='20' y1='20' x2='50' y2='30' stroke='%2300d4aa' stroke-width='0.5'/%3E%3Cline x1='50' y1='30' x2='80' y2='20' stroke='%2300d4aa' stroke-width='0.5'/%3E%3Cline x1='20' y1='20' x2='30' y2='50' stroke='%2300d4aa' stroke-width='0.5'/%3E%3Cline x1='50' y1='30' x2='30' y2='50' stroke='%2300d4aa' stroke-width='0.5'/%3E%3Cline x1='50' y1='30' x2='70' y2='50' stroke='%2300d4aa' stroke-width='0.5'/%3E%3Cline x1='80' y1='20' x2='70' y2='50' stroke='%2300d4aa' stroke-width='0.5'/%3E%3Cline x1='30' y1='50' x2='50' y2='70' stroke='%2300d4aa' stroke-width='0.5'/%3E%3Cline x1='70' y1='50' x2='50' y2='70' stroke='%2300d4aa' stroke-width='0.5'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
     }
-    @media (max-width: 640px) {
-      h1 { font-size: 32px; }
-      h2 { font-size: 28px; }
-      .nav-links { display: none; }
-      .product-grid { grid-template-columns: 1fr; }
-      .trust-grid { grid-template-columns: 1fr; }
-      .stats { flex-direction: column; gap: 24px; }
-      .crypto-badge span { display: none; }
+    
+    .vial-svg {
+      width: 120px;
+      height: 200px;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    }
+    
+    .vial-simple {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .vial-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
     }
   </style>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
-  
-  <nav>
-    <div class="nav-container">
-      <a href="/" class="logo">
-        <div class="logo-icon">⚡</div>
-        Titan Peptide Lab
-      </a>
-      <div class="nav-links">
-        <a href="#products">Products</a>
-        <a href="#quality">Quality</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div class="nav-right">
-        <span class="crypto-badge">₿ Crypto Only</span>
-        <button class="btn-primary" onclick="openCart()">Cart (<span id="cart-count">0</span>)</button>
-      </div>
-    </div>
-  </nav>
 
-  <main id="main">
-    <section class="hero">
-      <div class="hero-container">
-        <div class="hero-content">
-          <div class="badge">Independently Verified</div>
-          <h1>Research-grade peptides.<br><span>Verified to the molecule.</span></h1>
-          <p class="hero-description">Every compound independently tested via HPLC and mass spectrometry. Certificate of Analysis included with every order.</p>
-          <div class="crypto-notice">⚡ We only accept cryptocurrency — BTC, ETH, USDC, SOL</div>
-          <a href="#products" class="btn-primary btn-large">Browse Catalog</a>
-          
-          <div class="stats">
-            <div class="stat"><span class="stat-value">99.3%</span><span class="stat-label">Avg. Purity</span></div>
-            <div class="stat"><span class="stat-value">12,847</span><span class="stat-label">Batches Tested</span></div>
-            <div class="stat"><span class="stat-value">2,400+</span><span class="stat-label">Researchers</span></div>
-          </div>
-        </div>
-        
-        <div class="hero-visual">
-          <div class="hero-card">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent), var(--accent-hover)); border-radius: 10px; display: flex; align-items: center; justify-content: center;">📋</div>
-                <div>
-                  <div style="font-weight: 600;">Certificate of Analysis</div>
-                  <div style="font-size: 13px; color: var(--text-tertiary);">Batch #TPL-2604A</div>
-                </div>
-              </div>
-              <span style="padding: 6px 12px; background: rgba(34,197,94,0.15); color: var(--success); border-radius: 100px; font-size: 12px; font-weight: 600;">✓ VERIFIED</span>
-            </div>
-            <div class="coa-preview">
-              <div class="coa-row"><span style="color: var(--text-secondary);">HPLC Purity</span><strong>99.4%</strong></div>
-              <div class="coa-row"><span style="color: var(--text-secondary);">Mass Spectrometry</span><strong style="color: var(--success);">✓ PASS</strong></div>
-              <div class="coa-row"><span style="color: var(--text-secondary);">Endotoxin (LAL)</span><strong style="color: var(--success);">✓ PASS</strong></div>
-              <div class="coa-row"><span style="color: var(--text-secondary);">Heavy Metals</span><strong style="color: var(--success);">✓ PASS</strong></div>
-            </div>
-          </div>
-        </div>
+<!-- Navigation -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-icon">T</div>
+        <div class="logo-text">Titan <span>Peptide</span></div>
       </div>
-    </section>
-
-    <section class="products" id="products">
-      <div class="section-container">
-        <div class="section-header">
-          <h2>Research Compounds</h2>
-          <p>Every product ships with a batch-specific Certificate of Analysis</p>
-        </div>
-        
-        <div class="product-grid">
-          <article class="product-card">
-            <span class="product-tag">Recovery</span>
-            <h3>BPC-157</h3>
-            <p class="product-description">5mg · Lyophilized<br>Pentadecapeptide for tissue repair research.</p>
-            <div class="product-meta"><span class="product-price">$44.99</span><button class="add-to-cart" onclick="addToCart('BPC-157 5mg', 44.99)">Add to Cart</button></div>
-          </article>
-          
-          <article class="product-card">
-            <span class="product-tag">Recovery</span>
-            <h3>TB-500</h3>
-            <p class="product-description">5mg · Lyophilized<br>Thymosin Beta-4 for wound healing research.</p>
-            <div class="product-meta"><span class="product-price">$49.99</span><button class="add-to-cart" onclick="addToCart('TB-500 5mg', 49.99)">Add to Cart</button></div>
-          </article>
-          
-          <article class="product-card">
-            <span class="product-tag">Weight Loss</span>
-            <h3>Semaglutide</h3>
-            <p class="product-description">5mg · Lyophilized<br>GLP-1 receptor agonist for metabolic research.</p>
-            <div class="product-meta"><span class="product-price">$89.99</span><button class="add-to-cart" onclick="addToCart('Semaglutide 5mg', 89.99)">Add to Cart</button></div>
-          </article>
-          
-          <article class="product-card">
-            <span class="product-tag">Weight Loss</span>
-            <h3>Tirzepatide</h3>
-            <p class="product-description">5mg · Lyophilized<br>Dual GIP/GLP-1 receptor agonist.</p>
-            <div class="product-meta"><span class="product-price">$94.99</span><button class="add-to-cart" onclick="addToCart('Tirzepatide 5mg', 94.99)">Add to Cart</button></div>
-          </article>
-          
-          <article class="product-card">
-            <span class="product-tag">Cognitive</span>
-            <h3>Selank</h3>
-            <p class="product-description">5mg · Lyophilized<br>Synthetic tuftsin analogue for anxiolytic research.</p>
-            <div class="product-meta"><span class="product-price">$39.99</span><button class="add-to-cart" onclick="addToCart('Selank 5mg', 39.99)">Add to Cart</button></div>
-          </article>
-          
-          <article class="product-card">
-            <span class="product-tag">Cognitive</span>
-            <h3>Semax</h3>
-            <p class="product-description">5mg · Lyophilized<br>ACTH analogue for cognitive enhancement research.</p>
-            <div class="product-meta"><span class="product-price">$39.99</span><button class="add-to-cart" onclick="addToCart('Semax 5mg', 39.99)">Add to Cart</button></div>
-          </article>
-        </div>
+      <div style="display: flex; align-items: center; gap: 32px;">
+        <a href="#products" style="font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s;">Products</a>
+        <a href="#quality" style="font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s;">Quality</a>
+        <a href="#about" style="font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s;">About</a>
+        <a href="#order" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Order Now</a>
       </div>
-    </section>
-
-    <section class="trust" id="quality">
-      <div class="trust-grid">
-        <div class="trust-item"><div class="trust-icon">🔬</div><h4>Third-Party Tested</h4><p>Independent lab verification on every batch</p></div>
-        <div class="trust-item"><div class="trust-icon">📋</div><h4>COA Every Order</h4><p>Certificate of Analysis with full data</p></div>
-        <div class="trust-item"><div class="trust-icon">₿</div><h4>Crypto Only</h4><p>BTC, ETH, USDC, SOL accepted</p></div>
-        <div class="trust-item"><div class="trust-icon">🌍</div><h4>Global Shipping</h4><p>Discreet delivery to 45+ countries</p></div>
-      </div>
-    </section>
-  </main>
-
-  <div class="modal-overlay" id="cart-modal">
-    <div class="modal">
-      <div class="modal-header"><h3>Your Cart</h3><button class="modal-close" onclick="closeCart()">×</button></div>
-      <div id="cart-items"></div>
-      <div class="cart-total"><span>Total</span><span id="cart-total">$0.00</span></div>
-      <div class="crypto-warning">⚡ We only accept cryptocurrency payments. No credit cards or PayPal.</div>
-      <p style="font-size: 13px; color: var(--text-tertiary); margin-bottom: 12px;">Select payment method:</p>
-      <div class="crypto-option selected" onclick="selectCrypto('sol')"><div class="crypto-icon" style="color: #9945FF;">◎</div><div class="crypto-info"><strong>Solana (SOL / USDC)</strong><span>Fastest confirmation</span></div></div>
-      <div class="crypto-option" onclick="selectCrypto('eth')"><div class="crypto-icon" style="color: #627EEA;">Ξ</div><div class="crypto-info"><strong>Ethereum (ETH / USDC)</strong><span>ERC-20 tokens</span></div></div>
-      <div class="crypto-option" onclick="selectCrypto('btc')"><div class="crypto-icon" style="color: #F7931A;">₿</div><div class="crypto-info"><strong>Bitcoin (BTC)</strong><span>Contact for address</span></div></div>
-      <div class="wallet-address" id="wallet-address"><button class="copy-btn" onclick="copyAddress()">Copy</button><div style="margin-bottom: 8px; font-size: 12px; color: var(--text-tertiary);">Send payment to:</div><div id="wallet-addr">DEHeTxWAhXhmPBMYr5orRXDMMF1vUZ8E2vjB4CHowLQM</div></div>
-      <button class="submit-order" onclick="submitOrder()">Complete Order</button>
     </div>
   </div>
+</nav>
 
-  <script>
-    let cart = [];
-    let selectedCrypto = 'sol';
-    const wallets = {
-      sol: 'DEHeTxWAhXhmPBMYr5orRXDMMF1vUZ8E2vjB4CHowLQM',
-      eth: '0x24c5Fe40f83ae20De82ae3637b66DE8B0e5Cd362',
-      btc: 'Contact orders@titanpeptidelab.com for BTC address'
-    };
+<!-- Hero -->
+<section class="hero">
+  <div class="molecule-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="fade-in">
+        <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px;">
+          <span class="badge badge-verified">99%+ Verified</span>
+          <span class="badge badge-lab">Lab Grade</span>
+        </div>
+      </div>
+      
+      <h1 class="fade-in stagger-1">
+        Research Compounds.<br>
+        <span>Uncompromising Purity.</span>
+      </h1>
+      
+      <p class="fade-in stagger-2" style="font-size: 20px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">
+        Independent HPLC verification on every batch. Certificate of Analysis included. 
+        Discreet worldwide shipping.
+      </p>
+      
+      <div class="hero-actions fade-in stagger-3">
+        <a href="#products" class="btn btn-primary" style="padding: 16px 32px; font-size: 16px;">
+          Browse Products
+        </a>
+        <a href="#quality" class="btn btn-secondary" style="padding: 16px 32px; font-size: 16px;">
+          Our Standards
+        </a>
+      </div>
+      
+      <div class="trust-bar fade-in stagger-3">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          HPLC Tested
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Secure Shipping
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          COA Included
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Global Delivery
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="section" style="background: var(--bg-secondary); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-value">99.4%</div>
+        <div class="stat-label">Average Purity</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">15K+</div>
+        <div class="stat-label">Orders Shipped</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">48h</div>
+        <div class="stat-label">Processing Time</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">160+</div>
+        <div class="stat-label">Countries Served</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section id="products" class="section">
+  <div class="container">
+    <div class="section-header" style="text-align: center;">
+      <div class="section-label">Products</div>
+      <h2 class="text-4xl" style="margin-bottom: 16px;">Research-Grade Peptides</h2>
+      <p class="text-lg text-secondary" style="max-width: 600px; margin: 0 auto;">
+        Each compound undergoes independent third-party testing for identity, purity, and endotoxin levels.
+      </p>
+    </div>
     
-    function addToCart(name, price) { cart.push({ name, price }); updateCart(); openCart(); }
-    function updateCart() {
-      document.getElementById('cart-count').textContent = cart.length;
-      const itemsDiv = document.getElementById('cart-items');
-      if (cart.length === 0) itemsDiv.innerHTML = '<p style="color: var(--text-tertiary); text-align: center; padding: 40px 0;">Your cart is empty</p>';
-      else itemsDiv.innerHTML = cart.map(item => `<div class="cart-item"><span>${item.name}</span><strong>$${item.price.toFixed(2)}</strong></div>`).join('');
-      document.getElementById('cart-total').textContent = '$' + cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
-    }
-    function openCart() { document.getElementById('cart-modal').classList.add('active'); document.body.style.overflow = 'hidden'; }
-    function closeCart() { document.getElementById('cart-modal').classList.remove('active'); document.body.style.overflow = ''; }
-    function selectCrypto(crypto) {
-      selectedCrypto = crypto;
-      document.querySelectorAll('.crypto-option').forEach(el => el.classList.remove('selected'));
-      event.currentTarget.classList.add('selected');
-      document.getElementById('wallet-addr').textContent = wallets[crypto];
-    }
-    function copyAddress() { navigator.clipboard.writeText(wallets[selectedCrypto]); const btn = event.target; btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy', 2000); }
-    function submitOrder() {
-      if (cart.length === 0) { alert('Your cart is empty'); return; }
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      const orderId = 'TPL-' + Date.now().toString(36).toUpperCase();
-      alert(`Order ${orderId}\n\n` + cart.map(item => `${item.name}: $${item.price.toFixed(2)}`).join('\n') + `\n\nTotal: $${total.toFixed(2)}\n\nSend payment to:\n${wallets[selectedCrypto]}\n\nEmail your transaction ID to confirm order.`);
-      cart = []; updateCart(); closeCart();
-    }
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCart(); });
-    document.getElementById('cart-modal').addEventListener('click', (e) => { if (e.target.classList.contains('modal-overlay')) closeCart(); });
-  </script>
+    <div class="grid-products">
+      <!-- BPC-157 -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="vial-container">
+            <svg class="vial-svg" viewBox="0 0 60 100" fill="none">
+              <defs>
+                <linearGradient id="glass1" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/>
+                  <stop offset="50%" style="stop-color:rgba(255,255,255,0.05)"/>
+                  <stop offset="100%" style="stop-color:rgba(255,255,255,0.1)"/>
+                </linearGradient>
+              </defs>
+              <!-- Vial body -->
+              <rect x="15" y="25" width="30" height="60" rx="3" fill="url(#glass1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <!-- Vial neck -->
+              <rect x="20" y="15" width="20" height="10" fill="rgba(40,40,50,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <!-- Cap -->
+              <rect x="18" y="5" width="24" height="12" rx="2" fill="#2a2a35" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <!-- Label -->
+              <rect x="17" y="35" width="26" height="30" fill="rgba(250,250,252,0.95)" rx="1"/>
+              <text x="30" y="50" text-anchor="middle" font-size="6" fill="#1a1a2e" font-weight="600">BPC-157</text>
+              <text x="30" y="58" text-anchor="middle" font-size="4" fill="#666">5mg</text>
+              <!-- Highlights -->
+              <line x1="18" y1="28" x2="18" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+              <line x1="42" y1="28" x2="42" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="pc-badges" style="position: absolute; top: 12px; right: 12px;">
+            <span class="badge badge-lab">Healing</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Tissue Regeneration</div>
+          <h3 class="product-name">BPC-157</h3>
+          <p class="product-specs">5mg • Lyophilized Powder</p>
+          <div class="product-footer">
+            <span class="product-price">$49</span>
+            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('bpc157')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- TB-500 -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="vial-container">
+            <svg class="vial-svg" viewBox="0 0 60 100" fill="none">
+              <rect x="15" y="25" width="30" height="60" rx="3" fill="url(#glass1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <rect x="20" y="15" width="20" height="10" fill="rgba(40,40,50,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="18" y="5" width="24" height="12" rx="2" fill="#2a2a35" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <rect x="17" y="35" width="26" height="30" fill="rgba(250,250,252,0.95)" rx="1"/>
+              <text x="30" y="50" text-anchor="middle" font-size="6" fill="#1a1a2e" font-weight="600">TB-500</text>
+              <text x="30" y="58" text-anchor="middle" font-size="4" fill="#666">5mg</text>
+              <line x1="18" y1="28" x2="18" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="pc-badges" style="position: absolute; top: 12px; right: 12px;">
+            <span class="badge badge-lab">Recovery</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Systemic Healing</div>
+          <h3 class="product-name">TB-500</h3>
+          <p class="product-specs">5mg • Lyophilized Powder</p>
+          <div class="product-footer">
+            <span class="product-price">$54</span>
+            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('tb500')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Semaglutide -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="vial-container">
+            <svg class="vial-svg" viewBox="0 0 60 100" fill="none">
+              <rect x="15" y="25" width="30" height="60" rx="3" fill="url(#glass1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <rect x="20" y="15" width="20" height="10" fill="rgba(40,40,50,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="18" y="5" width="24" height="12" rx="2" fill="#2a2a35" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <rect x="17" y="35" width="26" height="30" fill="rgba(250,250,252,0.95)" rx="1"/>
+              <text x="30" y="48" text-anchor="middle" font-size="5" fill="#1a1a2e" font-weight="600">SEMA-</text>
+              <text x="30" y="55" text-anchor="middle" font-size="5" fill="#1a1a2e" font-weight="600">GLUTIDE</text>
+              <text x="30" y="62" text-anchor="middle" font-size="4" fill="#666">5mg</text>
+              <line x1="18" y1="28" x2="18" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="pc-badges" style="position: absolute; top: 12px; right: 12px;">
+            <span class="badge badge-verified">Popular</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Metabolic</div>
+          <h3 class="product-name">Semaglutide</h3>
+          <p class="product-specs">5mg • Lyophilized Powder</p>
+          <div class="product-footer">
+            <span class="product-price">$149</span>
+            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('sema')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tirzepatide -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="vial-container">
+            <svg class="vial-svg" viewBox="0 0 60 100" fill="none">
+              <rect x="15" y="25" width="30" height="60" rx="3" fill="url(#glass1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <rect x="20" y="15" width="20" height="10" fill="rgba(40,40,50,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="18" y="5" width="24" height="12" rx="2" fill="#2a2a35" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <rect x="17" y="35" width="26" height="30" fill="rgba(250,250,252,0.95)" rx="1"/>
+              <text x="30" y="48" text-anchor="middle" font-size="5" fill="#1a1a2e" font-weight="600">TIRZE-</text>
+              <text x="30" y="55" text-anchor="middle" font-size="5" fill="#1a1a2e" font-weight="600">PATIDE</text>
+              <text x="30" y="62" text-anchor="middle" font-size="4" fill="#666">5mg</text>
+              <line x1="18" y1="28" x2="18" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="pc-badges" style="position: absolute; top: 12px; right: 12px;">
+            <span class="badge badge-lab">GLP-1/GIP</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Dual Agonist</div>
+          <h3 class="product-name">Tirzepatide</h3>
+          <p class="product-specs">5mg • Lyophilized Powder</p>
+          <div class="product-footer">
+            <span class="product-price">$199</span>
+            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('tirz')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Retatrutide -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="vial-container">
+            <svg class="vial-svg" viewBox="0 0 60 100" fill="none">
+              <rect x="15" y="25" width="30" height="60" rx="3" fill="url(#glass1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <rect x="20" y="15" width="20" height="10" fill="rgba(40,40,50,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="18" y="5" width="24" height="12" rx="2" fill="#2a2a35" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <rect x="17" y="35" width="26" height="30" fill="rgba(250,250,252,0.95)" rx="1"/>
+              <text x="30" y="48" text-anchor="middle" font-size="5" fill="#1a1a2e" font-weight="600">RETATRU-</text>
+              <text x="30" y="55" text-anchor="middle" font-size="5" fill="#1a1a2e" font-weight="600">TIDE</text>
+              <text x="30" y="62" text-anchor="middle" font-size="4" fill="#666">5mg</text>
+              <line x1="18" y1="28" x2="18" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="pc-badges" style="position: absolute; top: 12px; right: 12px;">
+            <span class="badge badge-verified">Triple</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Triple Agonist</div>
+          <h3 class="product-name">Retatrutide</h3>
+          <p class="product-specs">5mg • Lyophilized Powder</p>
+          <div class="product-footer">
+            <span class="product-price">$249</span>
+            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('reta')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- CJC-1295 + Ipamorelin -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="vial-container">
+            <svg class="vial-svg" viewBox="0 0 60 100" fill="none">
+              <rect x="15" y="25" width="30" height="60" rx="3" fill="url(#glass1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <rect x="20" y="15" width="20" height="10" fill="rgba(40,40,50,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="18" y="5" width="24" height="12" rx="2" fill="#2a2a35" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <rect x="17" y="35" width="26" height="30" fill="rgba(250,250,252,0.95)" rx="1"/>
+              <text x="30" y="48" text-anchor="middle" font-size="5" fill="#1a1a2e" font-weight="600">CJC/Ipa</text>
+              <text x="30" y="55" text-anchor="middle" font-size="4" fill="#666">Blend</text>
+              <text x="30" y="62" text-anchor="middle" font-size="4" fill="#666">2mg/2mg</text>
+              <line x1="18" y1="28" x2="18" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="pc-badges" style="position: absolute; top: 12px; right: 12px;">
+            <span class="badge badge-lab">Growth</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Growth Stack</div>
+          <h3 class="product-name">CJC-1295 + Ipamorelin</h3>
+          <p class="product-specs">2mg/2mg • Lyophilized Blend</p>
+          <div class="product-footer">
+            <span class="product-price">$89</span>
+            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('cjcipa')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quality Section -->
+<section id="quality" class="section" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+      <div>
+        <div class="section-label">Quality Assurance</div>
+        <h2 class="text-4xl" style="margin-bottom: 24px;">Every Batch.<br>Verified. Documented.</h2>
+        <p class="text-lg text-secondary" style="margin-bottom: 32px;">
+          We don't just claim purity — we prove it. Every vial ships with a Certificate of Analysis from an independent third-party laboratory.
+        </p>
+        
+        <ul class="check-list">
+          <li>HPLC purity verification (≥99%)</li>
+          <li>Mass spectrometry confirmation</li>
+          <li>Endotoxin testing (<0.1 EU/mg)</li>
+          <li>Heavy metals screening</li>
+          <li>Sterility testing</li>
+          <li>Full chain of custody documentation</li>
+        </ul>
+      </div>
+      
+      <div class="card" style="padding: 40px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+          <div style="width: 48px; height: 48px; background: rgba(0, 212, 170, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div style="font-size: 14px; color: var(--text-tertiary);">Latest Analysis</div>
+            <div style="font-size: 16px; font-weight: 600;">BPC-157 Batch #2026-04-0892</div>
+          </div>
+        </div>
+        
+        <div style="display: grid; gap: 12px;">
+          <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--bg-tertiary); border-radius: 6px;">
+            <span class="text-sm text-secondary">Purity (HPLC)</span>
+            <span class="text-sm" style="color: var(--success); font-weight: 600;">99.4%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--bg-tertiary); border-radius: 6px;">
+            <span class="text-sm text-secondary">Identity (MS)</span>
+            <span class="text-sm" style="color: var(--success); font-weight: 600;">Confirmed</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--bg-tertiary); border-radius: 6px;">
+            <span class="text-sm text-secondary">Endotoxin</span>
+            <span class="text-sm" style="color: var(--success); font-weight: 600;"><0.1 EU/mg</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--bg-tertiary); border-radius: 6px;">
+            <span class="text-sm text-secondary">Heavy Metals</span>
+            <span class="text-sm" style="color: var(--success); font-weight: 600;">Pass</span>
+          </div>
+        </div>
+        
+        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06);">
+          <div style="font-size: 12px; color: var(--text-tertiary); font-family: var(--font-mono);">
+            Lab: North American Analytical<br>
+            Date: April 15, 2026<br>
+            Analyst: Dr. S. Chen, Ph.D.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Order Section -->
+<section id="order" class="section">
+  <div class="container" style="max-width: 800px; text-align: center;">
+    <div class="section-label">Ordering</div>
+    <h2 class="text-4xl" style="margin-bottom: 16px;">Simple. Secure. Discreet.</h2>
+    <p class="text-lg text-secondary" style="margin-bottom: 48px;">
+      We accept cryptocurrency for maximum privacy. Orders ship within 48 hours in plain, unmarked packaging.
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px;">
+      <div class="card" style="padding: 32px;">
+        <div style="width: 48px; height: 48px; background: var(--bg-tertiary); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+          <span style="font-size: 24px;">₿</span>
+        </div>
+        <h3 class="text-lg" style="margin-bottom: 8px;">Bitcoin</h3>
+        <p class="text-sm text-secondary">Network: Native</p>
+      </div>
+      
+      <div class="card" style="padding: 32px;">
+        <div style="width: 48px; height: 48px; background: var(--bg-tertiary); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+          <span style="font-size: 24px;">Ξ</span>
+        </div>
+        <h3 class="text-lg" style="margin-bottom: 8px;">Ethereum</h3>
+        <p class="text-sm text-secondary">Network: ERC-20</p>
+      </div>
+      
+      <div class="card" style="padding: 32px;">
+        <div style="width: 48px; height: 48px; background: var(--bg-tertiary); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+          <span style="font-size: 24px;">◎</span>
+        </div>
+        <h3 class="text-lg" style="margin-bottom: 8px;">Solana</h3>
+        <p class="text-sm text-secondary">Network: SPL</p>
+      </div>
+    </div>
+    
+    <div class="card" style="padding: 40px; text-align: left;">
+      <h3 class="text-2xl" style="margin-bottom: 8px;">Place Your Order</h3>
+      <p class="text-secondary" style="margin-bottom: 32px;">Fill out the form below. We'll respond within 24 hours with payment instructions.</p>
+      
+      <form id="orderForm" style="display: grid; gap: 20px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div>
+            <label style="display: block; font-size: 14px; color: var(--text-secondary); margin-bottom: 6px;">Name</label>
+            <input type="text" required style="width: 100%; padding: 12px; background: var(--bg-tertiary); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: var(--text-primary); font-size: 14px;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 14px; color: var(--text-secondary); margin-bottom: 6px;">Email</label>
+            <input type="email" required style="width: 100%; padding: 12px; background: var(--bg-tertiary); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: var(--text-primary); font-size: 14px;">
+          </div>
+        </div>
+        
+        <div>
+          <label style="display: block; font-size: 14px; color: var(--text-secondary); margin-bottom: 6px;">Products (include quantities)</label>
+          <textarea rows="4" placeholder="e.g., 2x BPC-157 5mg, 1x TB-500 5mg" required style="width: 100%; padding: 12px; background: var(--bg-tertiary); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: var(--text-primary); font-size: 14px; resize: vertical;"></textarea>
+        </div>
+        
+        <div>
+          <label style="display: block; font-size: 14px; color: var(--text-secondary); margin-bottom: 6px;">Shipping Country</label>
+          <select required style="width: 100%; padding: 12px; background: var(--bg-tertiary); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: var(--text-primary); font-size: 14px;">
+            <option value="">Select country...</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="UK">United Kingdom</option>
+            <option value="AU">Australia</option>
+            <option value="EU">Europe (Other)</option>
+            <option value="OTHER">Other</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="padding: 16px; font-size: 16px; margin-top: 8px;">
+          Request Order
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="background: var(--bg-secondary); border-top: 1px solid rgba(255,255,255,0.06); padding: 64px 0 32px;">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px;">
+      <div>
+        <div class="logo" style="margin-bottom: 16px;">
+          <div class="logo-icon" style="width: 32px; height: 32px; font-size: 16px;">T</div>
+          <div class="logo-text" style="font-size: 16px;">Titan <span>Peptide</span></div>
+        </div>
+        <p class="text-sm text-secondary" style="max-width: 280px; line-height: 1.7;">
+          Research-grade peptides for scientific study. Independent verification. Global shipping.
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="text-sm" style="font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em;">Products</h4>
+        <ul style="list-style: none; display: grid; gap: 10px;">
+          <li><a href="#products" class="text-sm text-secondary" style="text-decoration: none;">BPC-157</a></li>
+          <li><a href="#products" class="text-sm text-secondary" style="text-decoration: none;">TB-500</a></li>
+          <li><a href="#products" class="text-sm text-secondary" style="text-decoration: none;">Semaglutide</a></li>
+          <li><a href="#products" class="text-sm text-secondary" style="text-decoration: none;">Tirzepatide</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-sm" style="font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em;">Company</h4>
+        <ul style="list-style: none; display: grid; gap: 10px;">
+          <li><a href="#quality" class="text-sm text-secondary" style="text-decoration: none;">Quality</a></li>
+          <li><a href="#" class="text-sm text-secondary" style="text-decoration: none;">Lab Reports</a></li>
+          <li><a href="#" class="text-sm text-secondary" style="text-decoration: none;">Shipping</a></li>
+          <li><a href="#" class="text-sm text-secondary" style="text-decoration: none;">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-sm" style="font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em;">Legal</h4>
+        <ul style="list-style: none; display: grid; gap: 10px;">
+          <li><a href="#" class="text-sm text-secondary" style="text-decoration: none;">Terms</a></li>
+          <li><a href="#" class="text-sm text-secondary" style="text-decoration: none;">Privacy</a></li>
+          <li><a href="#" class="text-sm text-secondary" style="text-decoration: none;">Research Use Only</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div style="padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center;">
+      <p class="text-sm text-tertiary">© 2026 Titan Peptide Lab. All rights reserved.</p>
+      <p class="text-xs text-tertiary" style="max-width: 400px; text-align: right;">
+        Products sold are for research purposes only. Not for human or animal consumption.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Simple Cart Logic -->
+<script>
+let cart = [];
+
+function addToCart(productId) {
+  const products = {
+    'bpc157': { name: 'BPC-157', price: 49 },
+    'tb500': { name: 'TB-500', price: 54 },
+    'sema': { name: 'Semaglutide', price: 149 },
+    'tirz': { name: 'Tirzepatide', price: 199 },
+    'reta': { name: 'Retatrutide', price: 249 },
+    'cjcipa': { name: 'CJC-1295 + Ipamorelin', price: 89 }
+  };
+  
+  cart.push(products[productId]);
+  
+  // Simple toast
+  const toast = document.createElement('div');
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 16px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--accent-primary);
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+  `;
+  toast.textContent = `Added ${products[productId].name} to cart`;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.remove();
+  }, 2000);
+}
+
+document.getElementById('orderForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Order request submitted! We will contact you within 24 hours with payment instructions.');
+});
+</script>
+
+<style>
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+</style>
+
 </body>
 </html>

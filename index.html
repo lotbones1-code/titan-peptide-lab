@@ -8,33 +8,20 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg-primary: #0B0D11;
-      --bg-secondary: #14161F;
-      --bg-tertiary: #1C1F2A;
-      --bg-card: #181A23;
-      
-      --accent: #6366F1;
-      --accent-hover: #818CF8;
-      --accent-glow: rgba(99, 102, 241, 0.15);
-      --accent-bright: rgba(99, 102, 241, 0.3);
-      
-      --success: #22C55E;
-      --warning: #F59E0B;
-      
-      --text-primary: #F8FAFC;
-      --text-secondary: #94A3B8;
-      --text-tertiary: #64748B;
-      
-      --border: rgba(255,255,255,0.06);
-      --border-hover: rgba(99, 102, 241, 0.2);
-      
-      --shadow: 0 4px 24px rgba(0,0,0,0.3);
-      --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
-      --glow: 0 0 40px var(--accent-glow);
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F8F9FB;
+      --bg-dark: #0A0A0A;
+      --accent: #0066FF;
+      --accent-hover: #0052CC;
+      --text-primary: #0A0A0A;
+      --text-secondary: #6B7280;
+      --text-tertiary: #9CA3AF;
+      --border: #E5E7EB;
+      --border-light: #F3F4F6;
     }
     
     * {
@@ -45,7 +32,6 @@
     
     html {
       scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
     }
     
     body {
@@ -53,6 +39,7 @@
       background: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
     
     /* Typography */
@@ -61,14 +48,10 @@
     .text-base { font-size: 16px; line-height: 1.6; }
     .text-lg { font-size: 18px; line-height: 1.5; }
     .text-xl { font-size: 20px; line-height: 1.4; font-weight: 600; }
-    .text-2xl { font-size: 24px; line-height: 1.3; font-weight: 600; }
-    .text-3xl { font-size: 32px; line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; }
-    .text-4xl { font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; }
-    .text-5xl { font-size: 56px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; }
-    
-    .text-secondary { color: var(--text-secondary); }
-    .text-tertiary { color: var(--text-tertiary); }
-    .text-accent { color: var(--accent-hover); }
+    .text-2xl { font-size: 28px; line-height: 1.3; font-weight: 600; }
+    .text-3xl { font-size: 36px; line-height: 1.2; font-weight: 700; }
+    .text-4xl { font-size: 48px; line-height: 1.1; font-weight: 800; }
+    .text-5xl { font-size: 64px; line-height: 1; font-weight: 800; letter-spacing: -0.03em; }
     
     /* Container */
     .container {
@@ -77,16 +60,16 @@
       padding: 0 24px;
     }
     
-    /* Navigation */
+    /* Navigation - WHOOP Style */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(11, 13, 17, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-light);
     }
     
     .nav-inner {
@@ -97,42 +80,20 @@
     }
     
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-    
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-size: 24px;
       font-weight: 800;
-      font-size: 16px;
-      color: white;
-    }
-    
-    .logo-text {
-      font-size: 18px;
-      font-weight: 700;
+      text-decoration: none;
       color: var(--text-primary);
-    }
-    
-    .logo-text span {
-      color: var(--accent-hover);
+      letter-spacing: -0.02em;
     }
     
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 40px;
     }
     
     .nav-links a {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-secondary);
       text-decoration: none;
       font-weight: 500;
@@ -149,8 +110,8 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 24px;
-      font-size: 14px;
+      padding: 12px 28px;
+      font-size: 15px;
       font-weight: 600;
       border-radius: 8px;
       border: none;
@@ -166,83 +127,71 @@
     
     .btn-primary:hover {
       background: var(--accent-hover);
-      box-shadow: 0 0 20px var(--accent-bright);
       transform: translateY(-1px);
     }
     
-    .btn-secondary {
+    .btn-dark {
+      background: var(--bg-dark);
+      color: white;
+    }
+    
+    .btn-dark:hover {
+      background: #1a1a1a;
+    }
+    
+    .btn-outline {
       background: transparent;
       color: var(--text-primary);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 2px solid var(--border);
     }
     
-    .btn-secondary:hover {
-      background: var(--bg-tertiary);
-      border-color: rgba(255,255,255,0.2);
+    .btn-outline:hover {
+      border-color: var(--text-primary);
     }
     
-    /* Badges */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-radius: 9999px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    
-    .badge-verified {
-      background: rgba(34, 197, 94, 0.1);
-      color: var(--success);
-      border: 1px solid rgba(34, 197, 94, 0.2);
-    }
-    
-    .badge-lab {
-      background: var(--accent-glow);
-      color: var(--accent-hover);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-    }
-    
-    /* Hero */
+    /* Hero - WHOOP Style */
     .hero {
-      padding: 160px 0 80px;
-      position: relative;
-      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      background: var(--bg-primary);
     }
     
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      height: 600px;
-      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(99, 102, 241, 0.08), transparent);
-      pointer-events: none;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
     }
     
     .hero-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 560px;
     }
     
-    .hero-badges {
-      display: flex;
-      justify-content: center;
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
       gap: 8px;
+      padding: 8px 16px;
+      background: var(--bg-secondary);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
       margin-bottom: 32px;
     }
     
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    
     .hero h1 {
-      font-size: 56px;
+      font-size: 64px;
       line-height: 1.05;
       font-weight: 800;
       letter-spacing: -0.03em;
@@ -250,93 +199,64 @@
     }
     
     .hero h1 span {
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--accent);
     }
     
     .hero-description {
       font-size: 20px;
       color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 40px;
+      line-height: 1.6;
+      margin-bottom: 32px;
     }
     
     .hero-actions {
       display: flex;
       gap: 16px;
-      justify-content: center;
     }
     
-    /* Trust Bar */
-    .trust-bar {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      padding: 32px 0;
-      margin-top: 64px;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .hero-visual {
+      position: relative;
     }
     
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--text-secondary);
+    .hero-image {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 25px 100px rgba(0,0,0,0.15);
     }
     
-    .trust-item svg {
-      width: 20px;
-      height: 20px;
-      color: var(--accent);
-    }
-    
-    /* Stats */
-    .stats-section {
+    /* Trust Section */
+    .trust-section {
       padding: 48px 0;
       background: var(--bg-secondary);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
     
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+    .trust-grid {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
     }
     
-    .stat {
+    .trust-item {
       text-align: center;
-      padding: 24px;
     }
     
-    .stat-value {
-      font-size: 48px;
+    .trust-value {
+      font-size: 40px;
       font-weight: 800;
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--text-primary);
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
     
-    .stat-label {
+    .trust-label {
       font-size: 14px;
       color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
       font-weight: 500;
     }
     
-    /* Section */
-    .section {
-      padding: 96px 0;
-    }
-    
+    /* Section Header */
     .section-header {
       text-align: center;
       max-width: 600px;
@@ -344,50 +264,65 @@
     }
     
     .section-label {
-      font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
       color: var(--accent);
+      font-weight: 700;
       margin-bottom: 16px;
     }
     
-    /* Products */
+    .section-title {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+    }
+    
+    /* Products - WHOOP Style Grid */
+    .products-section {
+      padding: 96px 0;
+      background: var(--bg-primary);
+    }
+    
     .products-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 32px;
     }
     
     .product-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      background: var(--bg-secondary);
+      border-radius: 16px;
       overflow: hidden;
-      transition: all 0.25s ease;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-light);
     }
     
     .product-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: var(--glow);
-      transform: translateY(-4px);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
     }
     
     .product-image {
       aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #1a1e2d, #0f1218);
+      background: linear-gradient(135deg, #f0f4f8, #e8eef5);
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
+      padding: 32px;
     }
     
     .product-image img {
-      width: 70%;
+      width: 60%;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
       transition: transform 0.3s ease;
     }
     
@@ -395,35 +330,28 @@
       transform: scale(1.05);
     }
     
-    .product-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-    }
-    
     .product-info {
       padding: 24px;
     }
     
     .product-category {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--accent);
+      font-weight: 600;
       margin-bottom: 8px;
     }
     
     .product-name {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 4px;
-      color: var(--text-primary);
     }
     
     .product-specs {
       font-size: 14px;
-      color: var(--text-tertiary);
+      color: var(--text-secondary);
       margin-bottom: 16px;
     }
     
@@ -436,12 +364,25 @@
     .product-price {
       font-size: 24px;
       font-weight: 700;
-      color: var(--text-primary);
     }
     
-    /* Quality Section */
-    .quality-section {
-      background: var(--bg-secondary);
+    /* Dark Feature Section */
+    .feature-dark {
+      padding: 96px 0;
+      background: var(--bg-dark);
+      color: white;
+    }
+    
+    .feature-dark .section-label {
+      color: #60A5FA;
+    }
+    
+    .feature-dark .section-title {
+      color: white;
+    }
+    
+    .feature-dark .section-subtitle {
+      color: #9CA3AF;
     }
     
     .quality-grid {
@@ -451,41 +392,42 @@
       align-items: center;
     }
     
-    .check-list {
+    .quality-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
     
-    .check-list li {
+    .quality-list li {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
       font-size: 16px;
-      color: var(--text-secondary);
+      color: #D1D5DB;
     }
     
-    .check-list li::before {
-      content: '';
-      width: 20px;
-      height: 20px;
-      background: rgba(34, 197, 94, 0.1);
+    .quality-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(34, 197, 94, 0.2);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322C55E' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-      background-size: 12px;
-      background-position: center;
-      background-repeat: no-repeat;
+    }
+    
+    .quality-icon svg {
+      width: 16px;
+      height: 16px;
+      color: #22C55E;
     }
     
     .coa-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
       padding: 32px;
     }
     
@@ -496,44 +438,43 @@
       margin-bottom: 24px;
     }
     
-    .coa-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(34, 197, 94, 0.1);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--success);
-    }
-    
-    .coa-rows {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+    .coa-badge {
+      padding: 4px 12px;
+      background: rgba(34, 197, 94, 0.2);
+      color: #22C55E;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
     }
     
     .coa-row {
       display: flex;
       justify-content: space-between;
-      padding: 12px 16px;
-      background: var(--bg-tertiary);
-      border-radius: 6px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 14px;
+    }
+    
+    .coa-row:last-child {
+      border-bottom: none;
     }
     
     .coa-row span:first-child {
-      color: var(--text-secondary);
-      font-size: 14px;
+      color: #9CA3AF;
     }
     
     .coa-row span:last-child {
-      color: var(--success);
+      color: #22C55E;
       font-weight: 600;
-      font-size: 14px;
     }
     
     /* Order Section */
-    .order-grid {
+    .order-section {
+      padding: 96px 0;
+      background: var(--bg-secondary);
+    }
+    
+    .crypto-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
@@ -541,38 +482,50 @@
     }
     
     .crypto-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      background: var(--bg-primary);
+      border-radius: 16px;
       padding: 32px;
       text-align: center;
+      border: 1px solid var(--border);
       transition: all 0.2s;
     }
     
     .crypto-card:hover {
-      border-color: var(--border-hover);
+      border-color: var(--accent);
+      transform: translateY(-4px);
     }
     
     .crypto-icon {
-      width: 56px;
-      height: 56px;
-      background: var(--bg-tertiary);
-      border-radius: 12px;
+      width: 64px;
+      height: 64px;
+      background: var(--bg-secondary);
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 16px;
-      font-size: 24px;
+      font-size: 28px;
+    }
+    
+    .crypto-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .crypto-network {
+      font-size: 14px;
+      color: var(--text-secondary);
     }
     
     /* Form */
     .form-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      background: var(--bg-primary);
+      border-radius: 16px;
       padding: 40px;
       max-width: 600px;
       margin: 0 auto;
+      border: 1px solid var(--border);
     }
     
     .form-group {
@@ -582,23 +535,23 @@
     .form-group label {
       display: block;
       font-size: 14px;
-      color: var(--text-secondary);
+      font-weight: 600;
+      color: var(--text-primary);
       margin-bottom: 8px;
-      font-weight: 500;
     }
     
     .form-group input,
     .form-group textarea,
     .form-group select {
       width: 100%;
-      padding: 12px 16px;
-      background: var(--bg-tertiary);
-      border: 1px solid rgba(255,255,255,0.1);
+      padding: 14px 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
       border-radius: 8px;
       color: var(--text-primary);
-      font-size: 14px;
+      font-size: 15px;
       font-family: inherit;
-      transition: border-color 0.2s;
+      transition: all 0.2s;
     }
     
     .form-group input:focus,
@@ -606,6 +559,7 @@
     .form-group select:focus {
       outline: none;
       border-color: var(--accent);
+      background: var(--bg-primary);
     }
     
     .form-row {
@@ -616,8 +570,8 @@
     
     /* Footer */
     footer {
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--border);
+      background: var(--bg-dark);
+      color: white;
       padding: 64px 0 32px;
     }
     
@@ -628,8 +582,14 @@
       margin-bottom: 48px;
     }
     
+    .footer-brand .logo {
+      color: white;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    
     .footer-brand p {
-      color: var(--text-secondary);
+      color: #9CA3AF;
       font-size: 14px;
       line-height: 1.7;
       max-width: 280px;
@@ -637,10 +597,10 @@
     
     .footer-links h4 {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-primary);
+      letter-spacing: 0.1em;
+      color: white;
       margin-bottom: 16px;
     }
     
@@ -648,23 +608,23 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
     
     .footer-links a {
-      color: var(--text-secondary);
+      color: #9CA3AF;
       text-decoration: none;
       font-size: 14px;
       transition: color 0.2s;
     }
     
     .footer-links a:hover {
-      color: var(--text-primary);
+      color: white;
     }
     
     .footer-bottom {
       padding-top: 32px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid rgba(255,255,255,0.1);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -672,20 +632,22 @@
     
     .footer-bottom p {
       font-size: 14px;
-      color: var(--text-tertiary);
-    }
-    
-    .footer-disclaimer {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      max-width: 400px;
-      text-align: right;
+      color: #6B7280;
     }
     
     /* Responsive */
     @media (max-width: 1024px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-content {
+        max-width: 100%;
+      }
+      
+      .hero-actions {
+        justify-content: center;
       }
       
       .products-grid {
@@ -694,65 +656,46 @@
       
       .quality-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      
-      .order-grid {
-        grid-template-columns: repeat(2, 1fr);
       }
       
       .footer-grid {
         grid-template-columns: 1fr 1fr;
       }
       
-      .hero h1 {
-        font-size: 40px;
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
       }
     }
     
     @media (max-width: 768px) {
-      .stats-grid {
-        grid-template-columns: 1fr;
+      .hero h1 {
+        font-size: 40px;
       }
       
       .products-grid {
         grid-template-columns: 1fr;
       }
       
-      .order-grid {
+      .crypto-grid {
         grid-template-columns: 1fr;
       }
       
       .footer-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
       }
       
-      .footer-bottom {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-      }
-      
-      .footer-disclaimer {
-        text-align: center;
-      }
-      
-      .trust-bar {
-        flex-direction: column;
-        gap: 16px;
-      }
-      
-      .hero-actions {
-        flex-direction: column;
-      }
-      
-      .hero h1 {
-        font-size: 32px;
+      .form-row {
+        grid-template-columns: 1fr;
       }
       
       .nav-links {
         display: none;
+      }
+      
+      .trust-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -763,16 +706,13 @@
 <nav>
   <div class="container">
     <div class="nav-inner">
-      <a href="/" class="logo">
-        <div class="logo-icon">T</div>
-        <div class="logo-text">Titan <span>Lab</span></div>
-      </a>
+      <a href="/" class="logo">TITAN</a>
       <div class="nav-links">
         <a href="#products">Products</a>
         <a href="#quality">Quality</a>
         <a href="#order">Order</a>
       </div>
-      <a href="#order" class="btn btn-primary">Order Now</a>
+      <a href="#order" class="btn btn-dark">Get Started</a>
     </div>
   </div>
 </nav>
@@ -780,100 +720,75 @@
 <!-- Hero -->
 <section class="hero">
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-badges">
-        <span class="badge badge-verified">99%+ Verified</span>
-        <span class="badge badge-lab">Lab Grade</span>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">Research-Grade Compounds</div>
+        <h1>
+          Unlock your<br>
+          <span>potential.</span>
+        </h1>
+        <p class="hero-description">
+          Independent HPLC verification on every batch. Certificate of Analysis included. 
+          Discreet worldwide shipping.
+        </p>
+        <div class="hero-actions">
+          <a href="#products" class="btn btn-dark" style="padding: 16px 32px;">Shop Now</a>
+          <a href="#quality" class="btn btn-outline" style="padding: 16px 32px;">Learn More</a>
+        </div>
       </div>
-      
-      <h1>
-        Research Compounds.<br>
-        <span>Uncompromising Purity.</span>
-      </h1>
-      
-      <p class="hero-description">
-        Independent HPLC verification on every batch. Certificate of Analysis included. 
-        Discreet worldwide shipping.
-      </p>
-      
-      <div class="hero-actions">
-        <a href="#products" class="btn btn-primary" style="padding: 16px 32px; font-size: 16px;">Browse Products</a>
-        <a href="#quality" class="btn btn-secondary" style="padding: 16px 32px; font-size: 16px;">Our Standards</a>
-      </div>
-      
-      <div class="trust-bar">
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          HPLC Tested
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          Secure Shipping
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          COA Included
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Global Delivery
-        </div>
+      <div class="hero-visual">
+        <img src="mockup_bpc157.png" alt="Titan Peptide Lab Vial" class="hero-image" style="background: linear-gradient(135deg, #f0f4f8, #e8eef5);">
       </div>
     </div>
   </div>
 </section>
 
 <!-- Stats -->
-<section class="stats-section">
+<section class="trust-section">
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat">
-        <div class="stat-value">99.4%</div>
-        <div class="stat-label">Average Purity</div>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-value">99.4%</div>
+        <div class="trust-label">Average Purity</div>
       </div>
-      <div class="stat">
-        <div class="stat-value">15K+</div>
-        <div class="stat-label">Orders Shipped</div>
+      <div class="trust-item">
+        <div class="trust-value">15K+</div>
+        <div class="trust-label">Orders Shipped</div>
       </div>
-      <div class="stat">
-        <div class="stat-value">48h</div>
-        <div class="stat-label">Processing Time</div>
+      <div class="trust-item">
+        <div class="trust-value">48h</div>
+        <div class="trust-label">Processing Time</div>
       </div>
-      <div class="stat">
-        <div class="stat-value">160+</div>
-        <div class="stat-label">Countries Served</div>
+      <div class="trust-item">
+        <div class="trust-value">160+</div>
+        <div class="trust-label">Countries</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Products -->
-<section id="products" class="section">
+<section id="products" class="products-section">
   <div class="container">
     <div class="section-header">
       <div class="section-label">Products</div>
-      <h2 class="text-4xl" style="margin-bottom: 16px;">Research-Grade Peptides</h2>
-      <p class="text-lg text-secondary">
-        Each compound undergoes independent third-party testing for identity, purity, and endotoxin levels.
-      </p>
+      <h2 class="section-title">Shop our bestsellers</h2>
+      <p class="section-subtitle">Each compound undergoes independent third-party testing.</p>
     </div>
     
     <div class="products-grid">
       <!-- BPC-157 -->
       <div class="product-card">
         <div class="product-image">
-          <img src="mockup_bpc157.png" alt="BPC-157 5mg vial">
-          <div class="product-badge">
-            <span class="badge badge-lab">Healing</span>
-          </div>
+          <img src="mockup_bpc157.png" alt="BPC-157">
         </div>
         <div class="product-info">
-          <div class="product-category">Tissue Regeneration</div>
+          <div class="product-category">Healing</div>
           <h3 class="product-name">BPC-157</h3>
-          <p class="product-specs">5mg • Lyophilized Powder</p>
+          <p class="product-specs">5mg • Lyophilized</p>
           <div class="product-footer">
             <span class="product-price">$49</span>
-            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('bpc157')">Add</button>
+            <button class="btn btn-primary" style="padding: 8px 20px; font-size: 13px;" onclick="addToCart('bpc157')">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -881,18 +796,15 @@
       <!-- TB-500 -->
       <div class="product-card">
         <div class="product-image">
-          <img src="mockup_tb500.png" alt="TB-500 5mg vial">
-          <div class="product-badge">
-            <span class="badge badge-lab">Recovery</span>
-          </div>
+          <img src="mockup_tb500.png" alt="TB-500">
         </div>
         <div class="product-info">
-          <div class="product-category">Systemic Healing</div>
+          <div class="product-category">Recovery</div>
           <h3 class="product-name">TB-500</h3>
-          <p class="product-specs">5mg • Lyophilized Powder</p>
+          <p class="product-specs">5mg • Lyophilized</p>
           <div class="product-footer">
             <span class="product-price">$54</span>
-            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('tb500')">Add</button>
+            <button class="btn btn-primary" style="padding: 8px 20px; font-size: 13px;" onclick="addToCart('tb500')">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -900,18 +812,15 @@
       <!-- Semaglutide -->
       <div class="product-card">
         <div class="product-image">
-          <img src="mockup_semax.png" alt="Semaglutide 5mg vial">
-          <div class="product-badge">
-            <span class="badge badge-verified">Popular</span>
-          </div>
+          <img src="mockup_semax.png" alt="Semaglutide">
         </div>
         <div class="product-info">
-          <div class="product-category">Metabolic</div>
+          <div class="product-category">Popular</div>
           <h3 class="product-name">Semaglutide</h3>
-          <p class="product-specs">5mg • Lyophilized Powder</p>
+          <p class="product-specs">5mg • Lyophilized</p>
           <div class="product-footer">
             <span class="product-price">$149</span>
-            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('sema')">Add</button>
+            <button class="btn btn-primary" style="padding: 8px 20px; font-size: 13px;" onclick="addToCart('sema')">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -919,18 +828,15 @@
       <!-- Tirzepatide -->
       <div class="product-card">
         <div class="product-image">
-          <img src="mockup_selank.png" alt="Tirzepatide 5mg vial">
-          <div class="product-badge">
-            <span class="badge badge-lab">GLP-1/GIP</span>
-          </div>
+          <img src="mockup_selank.png" alt="Tirzepatide">
         </div>
         <div class="product-info">
           <div class="product-category">Dual Agonist</div>
           <h3 class="product-name">Tirzepatide</h3>
-          <p class="product-specs">5mg • Lyophilized Powder</p>
+          <p class="product-specs">5mg • Lyophilized</p>
           <div class="product-footer">
             <span class="product-price">$199</span>
-            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('tirz')">Add</button>
+            <button class="btn btn-primary" style="padding: 8px 20px; font-size: 13px;" onclick="addToCart('tirz')">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -938,18 +844,15 @@
       <!-- Retatrutide -->
       <div class="product-card">
         <div class="product-image">
-          <img src="mockup_retatrutide.png" alt="Retatrutide 5mg vial">
-          <div class="product-badge">
-            <span class="badge badge-verified">Triple</span>
-          </div>
+          <img src="mockup_retatrutide.png" alt="Retatrutide">
         </div>
         <div class="product-info">
-          <div class="product-category">Triple Agonist</div>
+          <div class="product-category">Triple</div>
           <h3 class="product-name">Retatrutide</h3>
-          <p class="product-specs">5mg • Lyophilized Powder</p>
+          <p class="product-specs">5mg • Lyophilized</p>
           <div class="product-footer">
             <span class="product-price">$249</span>
-            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('reta')">Add</button>
+            <button class="btn btn-primary" style="padding: 8px 20px; font-size: 13px;" onclick="addToCart('reta')">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -957,18 +860,15 @@
       <!-- CJC-1295 + Ipamorelin -->
       <div class="product-card">
         <div class="product-image">
-          <img src="mockup_cjcipa.png" alt="CJC-1295 + Ipamorelin blend vial">
-          <div class="product-badge">
-            <span class="badge badge-lab">Growth</span>
-          </div>
+          <img src="mockup_cjcipa.png" alt="CJC-1295 + Ipamorelin">
         </div>
         <div class="product-info">
-          <div class="product-category">Growth Stack</div>
-          <h3 class="product-name">CJC-1295 + Ipamorelin</h3>
-          <p class="product-specs">2mg/2mg • Lyophilized Blend</p>
+          <div class="product-category">Growth</div>
+          <h3 class="product-name">CJC/Ipa Blend</h3>
+          <p class="product-specs">2mg/2mg • Lyophilized</p>
           <div class="product-footer">
             <span class="product-price">$89</span>
-            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="addToCart('cjcipa')">Add</button>
+            <button class="btn btn-primary" style="padding: 8px 20px; font-size: 13px;" onclick="addToCart('cjcipa')">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -976,62 +876,78 @@
   </div>
 </section>
 
-<!-- Quality -->
-<section id="quality" class="section quality-section">
+<!-- Quality - Dark Section -->
+<section id="quality" class="feature-dark">
   <div class="container">
+    <div class="section-header">
+      <div class="section-label">Quality Assurance</div>
+      <h2 class="section-title">Every Batch. Verified.</h2>
+      <p class="section-subtitle">Independent third-party laboratory testing.</p>
+    </div>
+    
     <div class="quality-grid">
       <div>
-        <div class="section-label">Quality Assurance</div>
-        <h2 class="text-4xl" style="margin-bottom: 24px;">Every Batch.<br>Verified. Documented.</h2>
-        <p class="text-lg text-secondary" style="margin-bottom: 32px;">
-          We don't just claim purity — we prove it. Every vial ships with a Certificate of Analysis from an independent third-party laboratory.
-        </p>
-        
-        <ul class="check-list">
-          <li>HPLC purity verification (≥99%)</li>
-          <li>Mass spectrometry confirmation</li>
-          <li>Endotoxin testing (&lt;0.1 EU/mg)</li>
-          <li>Heavy metals screening</li>
-          <li>Sterility testing</li>
-          <li>Full chain of custody documentation</li>
+        <ul class="quality-list">
+          <li>
+            <div class="quality-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            HPLC purity verification (≥99%)
+          </li>
+          <li>
+            <div class="quality-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Mass spectrometry confirmation
+          </li>
+          <li>
+            <div class="quality-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Endotoxin testing (&lt;0.1 EU/mg)
+          </li>
+          <li>
+            <div class="quality-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Heavy metals screening
+          </li>
+          <li>
+            <div class="quality-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Sterility testing
+          </li>
         </ul>
       </div>
       
       <div class="coa-card">
         <div class="coa-header">
-          <div class="coa-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <div>
-            <div style="font-size: 14px; color: var(--text-tertiary);">Latest Analysis</div>
-            <div style="font-size: 16px; font-weight: 600;">BPC-157 Batch #2026-04-0892</div>
-          </div>
+          <span class="coa-badge">VERIFIED</span>
+          <div style="font-size: 14px; color: #9CA3AF;">BPC-157 Batch #2026-04-0892</div>
         </div>
         
-        <div class="coa-rows">
-          <div class="coa-row">
-            <span>Purity (HPLC)</span>
-            <span>99.4%</span>
-          </div>
-          <div class="coa-row">
-            <span>Identity (MS)</span>
-            <span>Confirmed</span>
-          </div>
-          <div class="coa-row">
-            <span>Endotoxin</span>
-            <span>&lt;0.1 EU/mg</span>
-          </div>
-          <div class="coa-row">
-            <span>Heavy Metals</span>
-            <span>Pass</span>
-          </div>
+        <div class="coa-row">
+          <span>Purity (HPLC)</span>
+          <span>99.4%</span>
+        </div>
+        <div class="coa-row">
+          <span>Identity (MS)</span>
+          <span>Confirmed</span>
+        </div>
+        <div class="coa-row">
+          <span>Endotoxin</span>
+          <span>&lt;0.1 EU/mg</span>
+        </div>
+        <div class="coa-row">
+          <span>Heavy Metals</span>
+          <span>Pass</span>
         </div>
         
-        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border);">
-          <div style="font-size: 12px; color: var(--text-tertiary); font-family: 'JetBrains Mono', monospace;">
+        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
+          <div style="font-size: 12px; color: #6B7280;">
             Lab: North American Analytical<br>
-            Date: April 15, 2026<br>
-            Analyst: Dr. S. Chen, Ph.D.
+            Date: April 15, 2026
           </div>
         </div>
       </div>
@@ -1040,39 +956,35 @@
 </section>
 
 <!-- Order -->
-<section id="order" class="section">
+<section id="order" class="order-section">
   <div class="container">
     <div class="section-header">
       <div class="section-label">Ordering</div>
-      <h2 class="text-4xl" style="margin-bottom: 16px;">Simple. Secure. Discreet.</h2>
-      <p class="text-lg text-secondary">
-        We accept cryptocurrency for maximum privacy. Orders ship within 48 hours in plain, unmarked packaging.
-      </p>
+      <h2 class="section-title">Simple. Secure. Discreet.</h2>
+      <p class="section-subtitle">We accept cryptocurrency for maximum privacy.</p>
     </div>
     
-    <div class="order-grid">
+    <div class="crypto-grid">
       <div class="crypto-card">
         <div class="crypto-icon">₿</div>
-        <h3 class="text-xl" style="margin-bottom: 8px;">Bitcoin</h3>
-        <p class="text-sm text-secondary">Network: Native</p>
+        <div class="crypto-name">Bitcoin</div>
+        <div class="crypto-network">Native Network</div>
       </div>
-      
       <div class="crypto-card">
         <div class="crypto-icon">Ξ</div>
-        <h3 class="text-xl" style="margin-bottom: 8px;">Ethereum</h3>
-        <p class="text-sm text-secondary">Network: ERC-20</p>
+        <div class="crypto-name">Ethereum</div>
+        <div class="crypto-network">ERC-20</div>
       </div>
-      
       <div class="crypto-card">
         <div class="crypto-icon">◎</div>
-        <h3 class="text-xl" style="margin-bottom: 8px;">Solana</h3>
-        <p class="text-sm text-secondary">Network: SPL</p>
+        <div class="crypto-name">Solana</div>
+        <div class="crypto-network">SPL</div>
       </div>
     </div>
     
     <div class="form-card">
-      <h3 class="text-2xl" style="margin-bottom: 8px;">Place Your Order</h3>
-      <p class="text-secondary" style="margin-bottom: 32px;">Fill out the form below. We'll respond within 24 hours with payment instructions.</p>
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">Place Your Order</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 32px;">Fill out the form. We'll respond within 24 hours with payment instructions.</p>
       
       <form id="orderForm">
         <div class="form-row">
@@ -1087,7 +999,7 @@
         </div>
         
         <div class="form-group">
-          <label>Products (include quantities)</label>
+          <label>Products</label>
           <textarea rows="4" placeholder="e.g., 2x BPC-157 5mg, 1x TB-500 5mg" required></textarea>
         </div>
         
@@ -1104,7 +1016,7 @@
           </select>
         </div>
         
-        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px;">
+        <button type="submit" class="btn btn-dark" style="width: 100%; padding: 16px;">
           Request Order
         </button>
       </form>
@@ -1117,10 +1029,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo" style="margin-bottom: 16px;">
-          <div class="logo-icon" style="width: 32px; height: 32px; font-size: 14px;">T</div>
-          <div class="logo-text" style="font-size: 16px;">Titan <span>Lab</span></div>
-        </div>
+        <a href="/" class="logo">TITAN</a>
         <p>Research-grade peptides for scientific study. Independent verification. Global shipping.</p>
       </div>
       
@@ -1156,7 +1065,9 @@
     
     <div class="footer-bottom">
       <p>© 2026 Titan Peptide Lab. All rights reserved.</p>
-      <p class="footer-disclaimer">Products sold are for research purposes only. Not for human or animal consumption.</p>
+      <p style="font-size: 12px; color: #6B7280; max-width: 400px; text-align: right;">
+        Products sold are for research purposes only. Not for human or animal consumption.
+      </p>
     </div>
   </div>
 </footer>
@@ -1177,15 +1088,15 @@ function addToCart(productId) {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    background: var(--bg-card);
-    color: var(--text-primary);
+    background: var(--bg-dark);
+    color: white;
     padding: 16px 24px;
     border-radius: 8px;
-    border: 1px solid var(--accent);
     z-index: 1000;
     animation: slideIn 0.3s ease;
+    font-weight: 600;
   `;
-  toast.textContent = 'Added ' + products[productId] + ' to cart';
+  toast.textContent = 'Added ' + products[productId];
   document.body.appendChild(toast);
   
   setTimeout(() => toast.remove(), 2000);

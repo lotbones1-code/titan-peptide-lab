@@ -2,7 +2,7 @@
 
 Research-grade peptides, third-party COA-tested, crypto-only checkout. Research use only (RUO).
 
-**Website:** https://www.titanpeptidelab.com
+**Website:** https://www.titanpeptidelab.com/about/
 
 ## Popular research pages
 - [Where to buy retatrutide](https://www.titanpeptidelab.com/where-to-buy-retatrutide/)
